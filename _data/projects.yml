@@ -1,0 +1,62 @@
+# Add your projects here. Each project will appear as a card on the Projects page.
+# Fields: title, description, tags (list), link (optional), github (optional), featured (true/false)
+
+- title: 5G Core Network Migration Framework
+  description: >
+    Designed and led end-to-end migration from EPC to 5G Standalone Core for a major telecom operator.
+    Includes AMF, SMF, UPF, PCF deployment blueprints, LLD/HLD documentation, and ATPs.
+  tags:
+    - 5G Core
+    - AMF/SMF/UPF
+    - Network Architecture
+    - HLD/LLD
+  featured: true
+
+- title: IMS Network Performance Analytics
+  description: >
+    Python-based analytics pipeline for IMS call quality monitoring. Ingests DIAMETER and SIP signaling
+    data, applies ML algorithms for anomaly detection, and visualizes KPIs through interactive dashboards.
+  tags:
+    - Python
+    - Machine Learning
+    - DIAMETER
+    - SIP
+    - Tableau
+  github: "#" # Add your GitHub link
+  featured: true
+
+- title: Multi-Vendor OSS Integration
+  description: >
+    Automated integration of Ericsson ENM, Mavenir XA, and Huawei M2000/U2020 OSS platforms with
+    environmental monitoring systems. Reduced manual reporting time by automating fault correlation.
+  tags:
+    - Ericsson ENM
+    - Mavenir XA
+    - Huawei M2000
+    - Automation
+    - Bash
+  featured: true
+
+- title: C-V2X Protocol Stack Analysis
+  description: >
+    Research and documentation of C-V2X communication protocols (CAM, DENM, BTP) as per ETSI ITS and
+    5GAA standards. Includes protocol flow diagrams and interoperability test cases.
+  tags:
+    - C-V2X
+    - V2X
+    - 5GAA
+    - CAM/DENM
+    - Protocol Analysis
+  featured: false
+
+- title: Packet Core Capacity Planning Tool
+  description: >
+    SQL and Python-based tool for automated capacity analysis of PGW, SGW, and PCRF nodes.
+    Generates forecasts using historical KPI data to support proactive scaling decisions.
+  tags:
+    - Python
+    - SQL
+    - PGW/SGW
+    - PCRF
+    - Capacity Planning
+  featured: false

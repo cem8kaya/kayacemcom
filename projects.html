@@ -1,0 +1,97 @@
+---
+layout: default
+title: Projects
+description: Technical projects by Cem Kaya — 5G Core architecture, IMS analytics, OSS automation, and telecom protocol analysis.
+---
+
+<div class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Projects</h1>
+    <p class="page-subtitle">Technical work in network architecture, analytics, and automation.</p>
+  </div>
+</div>
+
+<section class="projects-page">
+  <div class="container">
+
+    <div class="project-filter" id="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="5G Core">5G Core</button>
+      <button class="filter-btn" data-filter="Python">Python</button>
+      <button class="filter-btn" data-filter="Protocol Analysis">Protocol Analysis</button>
+      <button class="filter-btn" data-filter="Automation">Automation</button>
+    </div>
+
+    <div class="projects-page-grid" id="projects-grid">
+      {% for project in site.data.projects %}
+      <div class="project-card reveal" data-tags="{{ project.tags | join: ',' }}">
+        <div class="project-card-header">
+          <div class="project-icon">
+            {% if project.tags contains "5G Core" or project.tags contains "Network Architecture" %}
+            <i class="fas fa-tower-broadcast"></i>
+            {% elsif project.tags contains "Python" or project.tags contains "Machine Learning" %}
+            <i class="fas fa-brain"></i>
+            {% elsif project.tags contains "Automation" %}
+            <i class="fas fa-robot"></i>
+            {% elsif project.tags contains "Protocol Analysis" %}
+            <i class="fas fa-sitemap"></i>
+            {% else %}
+            <i class="fas fa-diagram-project"></i>
+            {% endif %}
+          </div>
+          <div class="project-links">
+            {% if project.github %}<a href="{{ project.github }}" class="project-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>{% endif %}
+            {% if project.link %}<a href="{{ project.link }}" class="project-link" target="_blank" rel="noopener" aria-label="View project"><i class="fas fa-external-link-alt"></i></a>{% endif %}
+          </div>
+        </div>
+        {% if project.featured %}
+        <div style="margin-bottom: 0.25rem;">
+          <span class="tag tag-sm" style="background: #fef9c3; color: #854d0e; border-color: #fde68a;">⭐ Featured</span>
+        </div>
+        {% endif %}
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-desc">{{ project.description }}</p>
+        <div class="project-tags">
+          {% for tag in project.tags %}
+          <span class="tag tag-sm">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<!-- ADD PROJECT CTA -->
+<section style="padding: 4rem 0; background: var(--bg-primary);">
+  <div class="container text-center">
+    <p class="text-muted" style="font-size: 0.9rem;">
+      <i class="fas fa-info-circle"></i>
+      &nbsp;To add a new project, edit <code>_data/projects.yml</code> — no HTML changes needed.
+    </p>
+  </div>
+</section>
+
+<script>
+  // Filter functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#projects-grid .project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.tags.includes(filter)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

@@ -1,0 +1,96 @@
+summary: |
+  Experienced Solutions Architect specializing in Voice Core and Packet Core network management, system administration, and vendor management. Deep expertise in IMS, 5G Core Network functions, and telecom protocol standards. Analytical professional with a Telecommunications & Computer Science background, skilled at transforming complex network challenges into cost-effective solutions and efficient operations.
+
+experience:
+  - company: "Telecom Company" # Update with your actual company
+    title: Solutions Architect – IMS & 5G Core Network
+    period: "2020 – Present"
+    location: Istanbul, Turkey
+    highlights:
+      - Design and implement IMS and 5G Core Network architectures including AMF, SMF, UPF, PCF deployments
+      - Lead vendor management for Ericsson, Huawei, and Mavenir network functions (TAS, CSCF, SBC, HSS)
+      - Perform upgrade, swap, and capacity planning operations for Voice Core and Packet Core systems
+      - Integrate Ericsson ENM, Mavenir XA, Huawei CEM/SQM and M2000/U2020 OSS with environmental systems
+      - Prepare HLD, LLD, ISD, and ATP documentation for network solutions
+      - Present findings to senior leadership to inform critical infrastructure decisions
+
+  - company: "Previous Company" # Update with your actual company
+    title: Network Engineer – Voice & Packet Core
+    period: "2016 – 2020"
+    location: Istanbul, Turkey
+    highlights:
+      - Managed Class 4 and Class 5 Softswitch operations and troubleshooting
+      - Administered DNS, DIAMETER, GTP, and SIP protocol stacks across multi-vendor environments
+      - Conducted data analysis and feature engineering using Python, SQL, and Bash scripting
+      - Performed EPC network management including PGW, SGW, and PCRF configuration and optimization
+
+skills:
+  - category: 5G & IMS Core
+    items:
+      - AMF
+      - SMF
+      - UPF
+      - PCF
+      - CSCF
+      - TAS
+      - SBC
+      - HSS
+      - EPC
+
+  - category: Packet Core
+    items:
+      - PGW
+      - SGW
+      - PCRF
+      - DIAMETER
+      - GTP
+
+  - category: Vendor Platforms
+    items:
+      - Ericsson ENM
+      - Mavenir XA
+      - Huawei M2000
+      - Huawei U2020
+      - Huawei CEM/SQM
+
+  - category: Protocols & Standards
+    items:
+      - SIP
+      - H.323
+      - RTP
+      - DNS
+      - HTTP/2
+      - NGAP
+      - V2X / C-V2X
+      - BTP
+      - CAM / DENM
+
+  - category: Standards Bodies
+    items:
+      - 3GPP
+      - IETF
+      - ITU
+      - 5GAA
+
+  - category: Programming & Data
+    items:
+      - Python
+      - SQL
+      - Bash
+      - C++
+      - Tableau
+      - Alteryx
+
+education:
+  - degree: "B.Sc. Telecommunications Engineering" # Update with your actual degree
+    school: "Your University" # Update with your actual university
+    period: "2008 – 2012"
+    location: Turkey
+
+certifications:
+  - name: "Ericsson Certified Expert – IMS" # Update with your actual certifications
+    issuer: Ericsson
+    year: 2021
+  - name: "5G Core Network Specialist" # Update as needed
+    issuer: Huawei
+    year: 2020
