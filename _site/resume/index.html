@@ -413,7 +413,8 @@
     </div>
     <div class="contact-grid">
       <div>
-        <p class="lead">I'm open to consulting engagements, full-time roles, and collaboration on challenging telecom and data engineering projects.</p>
+        <p class="lead">I'm open to consulting engagements, full-time roles, and collaboration on challenging telecom
+          and data engineering projects.</p>
         <div class="contact-list" style="margin-top: 1.5rem;">
           <div class="contact-item">
             <i class="far fa-envelope"></i>
@@ -421,11 +422,24 @@
           </div>
           <div class="contact-item">
             <i class="fab fa-linkedin"></i>
-            <a href="https://linkedin.com/in/cemkaya" target="_blank" rel="noopener">LinkedIn Profile</a>
+            <a href="https://linkedin.com/in/cemkaya" target="_blank" rel="noopener">LinkedIn
+              Profile</a>
           </div>
         </div>
       </div>
-      <form class="contact-form" name="contact" netlify>
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Required Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="cf77835f-a601-445f-9208-60b3e5535085">
+
+        <!-- Optional: Subject Line -->
+        <input type="hidden" name="subject" value="New Contact from kayacem.com">
+
+        <!-- Spambot Honeypot -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <!-- Optional: Redirect Page after submission -->
+        <input type="hidden" name="redirect" value="https://kayacem.com/resume?success=true#contact">
+
         <div class="form-group">
           <label class="form-label" for="name">Name</label>
           <input class="form-control" type="text" id="name" name="name" placeholder="Your name" required>
@@ -436,7 +450,8 @@
         </div>
         <div class="form-group">
           <label class="form-label" for="message">Message</label>
-          <textarea class="form-control" id="message" name="message" placeholder="Tell me about your project or question..." required></textarea>
+          <textarea class="form-control" id="message" name="message"
+            placeholder="Tell me about your project or question..." required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">
           <i class="fas fa-paper-plane"></i> Send Message
@@ -445,7 +460,6 @@
     </div>
   </div>
 </section>
-
   </main>
 
   <footer class="site-footer">

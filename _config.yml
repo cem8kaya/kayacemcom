@@ -11,6 +11,10 @@ author:
   github: cem8kaya
   location: Istanbul, Turkey
 
+# Contact Form Settings
+contact_form:
+  web3forms_key: "cf77835f-a601-445f-9208-60b3e5535085" # Put your key from https://web3forms.com/ here
+
 # Build settings
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
