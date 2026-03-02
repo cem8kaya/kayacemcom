@@ -1,0 +1,28 @@
+<header class="site-header" id="site-header">
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="{{ '/' | relative_url }}" class="nav-logo">
+        <span class="logo-name">Cem Kaya</span>
+        <span class="logo-dot">.</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Home</a></li>
+        <li><a href="{{ '/resume' | relative_url }}" class="nav-link {% if page.url contains 'resume' %}active{% endif %}">Resume</a></li>
+        <li><a href="{{ '/projects' | relative_url }}" class="nav-link {% if page.url contains 'projects' %}active{% endif %}">Projects</a></li>
+        <li><a href="{{ '/blog' | relative_url }}" class="nav-link {% if page.url contains 'blog' %}active{% endif %}">Blog</a></li>
+        <li>
+          <a href="{{ '/resume' | relative_url }}#contact" class="btn btn-primary btn-sm">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

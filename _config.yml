@@ -1,0 +1,31 @@
+title: Cem Kaya
+description: Solutions Architect | IMS & 5G Core Network
+url: "https://kayacem.com"
+baseurl: ""
+
+author:
+  name: Cem Kaya
+  title: Solutions Architect (IMS & 5G Core Network)
+  email: cem@kayacem.com
+  linkedin: cemkaya
+  github: cemkaya
+  location: Istanbul, Turkey
+
+# Build settings
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
