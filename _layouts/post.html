@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<article class="post-article">
+  <div class="post-hero">
+    <div class="container">
+      <div class="post-meta-top">
+        <a href="{{ '/blog' | relative_url }}" class="back-link">
+          <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+      <div class="post-meta">
+        <span><i class="far fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}</span>
+        {% if page.author %}
+        <span><i class="far fa-user"></i> {{ page.author }}</span>
+        {% endif %}
+        {% if page.tags %}
+        <span><i class="fas fa-tags"></i>
+          {% for tag in page.tags %}
+          <span class="tag tag-sm">{{ tag }}</span>
+          {% endfor %}
+        </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="post-body">
+      {{ content }}
+    </div>
+
+    <div class="post-footer">
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-outline">
+        <i class="fas fa-arrow-left"></i> All Posts
+      </a>
+    </div>
+  </div>
+</article>

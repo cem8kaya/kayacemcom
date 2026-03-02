@@ -1,0 +1,232 @@
+---
+layout: default
+title: Home
+description: Cem Kaya — Solutions Architect specializing in IMS & 5G Core Network. Expert in telecom network design, protocol engineering, and data analytics.
+---
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">Available for consulting</div>
+        <h1 class="hero-name">Cem Kaya</h1>
+        <p class="hero-title">Solutions Architect · IMS & 5G Core Network</p>
+        <p class="hero-description">
+          Telecommunications professional with deep expertise in Voice Core, Packet Core, and 5G network architecture.
+          I design resilient networks, lead complex migrations, and bridge the gap between protocol engineering and data-driven insights.
+        </p>
+        <div class="hero-actions">
+          <a href="{{ '/resume' | relative_url }}" class="btn btn-primary btn-lg">
+            <i class="far fa-file-alt"></i> View Resume
+          </a>
+          <a href="{{ '/projects' | relative_url }}" class="btn btn-outline btn-lg">
+            <i class="fas fa-folder-open"></i> See Projects
+          </a>
+        </div>
+        <div class="hero-social">
+          <a href="https://linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:{{ site.author.email }}" class="social-icon" aria-label="Email">
+            <i class="far fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-avatar" aria-hidden="true">
+        <span class="hero-avatar-text">CK</span>
+      </div>
+    </div>
+
+    <div class="hero-stats reveal">
+      <div class="stat-item">
+        <span class="stat-value">10+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">3</span>
+        <span class="stat-label">Vendor Platforms</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">5G</span>
+        <span class="stat-label">Core Expertise</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">5+</span>
+        <span class="stat-label">Years Coding</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-header">
+          <span class="section-label">About Me</span>
+          <h2 class="section-title">Building the backbone of modern telecommunications</h2>
+        </div>
+        <p class="lead">
+          {{ site.data.resume.summary }}
+        </p>
+      </div>
+
+      <div class="about-features reveal">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-network-wired"></i></div>
+          <h4 class="feature-title">5G Core</h4>
+          <p class="feature-desc">AMF, SMF, UPF, PCF design and deployment</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-phone-alt"></i></div>
+          <h4 class="feature-title">IMS / VoLTE</h4>
+          <p class="feature-desc">CSCF, TAS, SBC, HSS architecture</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-code"></i></div>
+          <h4 class="feature-title">Data & ML</h4>
+          <p class="feature-desc">Python, SQL analytics & ML pipelines</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+          <h4 class="feature-title">Documentation</h4>
+          <p class="feature-desc">HLD, LLD, ISD, ATP technical writing</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS PREVIEW -->
+<section class="skills-preview">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-label">Technical Expertise</span>
+      <h2 class="section-title">Skills & Technologies</h2>
+      <p class="section-subtitle" style="color: var(--text-muted); margin: 0 auto;">
+        Deep knowledge across network functions, protocols, standards, and programming tools.
+      </p>
+    </div>
+    <div class="skills-grid-preview reveal">
+      {% for skill_group in site.data.resume.skills %}
+      <div class="skill-category-card">
+        <h4 class="skill-cat-title">{{ skill_group.category }}</h4>
+        <div class="skill-cat-items">
+          {% for item in skill_group.items %}
+          <span class="skill-item">{{ item }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center" style="margin-top: 2.5rem;">
+      <a href="{{ '/resume' | relative_url }}" class="btn btn-outline" style="color: white; border-color: var(--bg-dark-3);">
+        View Full Resume <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="projects-preview">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Portfolio</span>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">A selection of technical projects spanning network architecture, analytics, and automation.</p>
+    </div>
+    <div class="projects-grid">
+      {% assign featured = site.data.projects | where: "featured", true %}
+      {% for project in featured %}
+      <div class="project-card reveal">
+        <div class="project-card-header">
+          <div class="project-icon">
+            <i class="fas fa-diagram-project"></i>
+          </div>
+          <div class="project-links">
+            {% if project.github %}<a href="{{ project.github }}" class="project-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>{% endif %}
+            {% if project.link %}<a href="{{ project.link }}" class="project-link" target="_blank" rel="noopener" aria-label="Demo"><i class="fas fa-external-link-alt"></i></a>{% endif %}
+          </div>
+        </div>
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-desc">{{ project.description }}</p>
+        <div class="project-tags">
+          {% for tag in project.tags %}
+          <span class="tag tag-sm">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center" style="margin-top: 2.5rem;">
+      <a href="{{ '/projects' | relative_url }}" class="btn btn-primary">
+        View All Projects <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+{% assign recent_posts = site.posts | limit: 3 %}
+{% if recent_posts.size > 0 %}
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Writing</span>
+      <h2 class="section-title">From the Blog</h2>
+      <p class="section-subtitle">Thoughts on telecom engineering, 5G, and data analytics.</p>
+    </div>
+    <div class="blog-list">
+      {% for post in recent_posts %}
+      <div class="blog-card reveal">
+        <div>
+          <div class="blog-card-date">
+            <i class="far fa-calendar"></i> {{ post.date | date: "%B %d, %Y" }}
+          </div>
+          <a href="{{ post.url | relative_url }}" class="blog-card-title">{{ post.title }}</a>
+          <p class="blog-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+          <div class="blog-card-tags">
+            {% for tag in post.tags %}
+            <span class="tag tag-sm">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        <a href="{{ post.url | relative_url }}" class="blog-card-arrow" aria-label="Read more">
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center" style="margin-top: 2.5rem;">
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-outline">
+        All Posts <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <span class="section-label">Let's Connect</span>
+    <h2 class="section-title">Have a project in mind?</h2>
+    <p class="section-subtitle">
+      Whether you need network architecture consultation, technical documentation, or a data analytics solution — I'd love to talk.
+    </p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="mailto:{{ site.author.email }}" class="btn btn-primary btn-lg">
+        <i class="far fa-envelope"></i> Get in Touch
+      </a>
+      <a href="{{ '/resume' | relative_url }}" class="btn btn-ghost btn-lg" style="color: var(--text-inverse); border-color: var(--bg-dark-3);">
+        <i class="far fa-file-alt"></i> View Resume
+      </a>
+    </div>
+  </div>
+</section>
