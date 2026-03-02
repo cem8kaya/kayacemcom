@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Cem Kaya</title>
+  <meta name="description" content="Technical writing by Cem Kaya on 5G, IMS, telecom protocols, and data engineering.">
+
+  <!-- SEO -->
+  <meta property="og:title" content="Blog">
+  <meta property="og:description" content="Technical writing by Cem Kaya on 5G, IMS, telecom protocols, and data engineering.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+</head>
+<body>
+  <header class="site-header" id="site-header">
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="nav-logo">
+        <span class="logo-name">Cem Kaya</span>
+        <span class="logo-dot">.</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/" class="nav-link ">Home</a></li>
+        <li><a href="/resume" class="nav-link ">Resume</a></li>
+        <li><a href="/projects" class="nav-link ">Projects</a></li>
+        <li><a href="/blog" class="nav-link active">Blog</a></li>
+        <li>
+          <a href="/resume#contact" class="btn btn-primary btn-sm">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+  <main>
+    <div class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Blog</h1>
+    <p class="page-subtitle">Thoughts on 5G, IMS, telecom protocols, and data analytics.</p>
+  </div>
+</div>
+
+<div class="container" style="padding: 3.5rem 1.5rem;">
+  <div class="blog-layout">
+
+    <!-- POSTS -->
+    <div>
+      
+      <div class="blog-list">
+        
+        <div class="blog-card reveal">
+          <div>
+            <div class="blog-card-date">
+              <i class="far fa-calendar"></i> March 02, 2026
+            </div>
+            <a href="/blog/2026/03/02/welcome-to-my-blog/" class="blog-card-title">Welcome to My Blog: Thoughts on 5G, IMS, and Beyond</a>
+            <p class="blog-card-excerpt">An introduction to this blog and what you can expect — deep dives into 5G Core architecture, IMS design patterns, protocol analysis, and the intersection of telecom with data engineering.
+</p>
+            <div class="blog-card-tags">
+              
+              <span class="tag tag-sm">5G</span>
+              
+              <span class="tag tag-sm">IMS</span>
+              
+              <span class="tag tag-sm">Telecom</span>
+              
+            </div>
+          </div>
+          <a href="/blog/2026/03/02/welcome-to-my-blog/" class="blog-card-arrow" aria-label="Read more">
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+      </div>
+      
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar">
+
+      
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Topics</div>
+        <div class="skill-tags">
+          
+          
+          
+          
+          <span class="tag tag-sm">5G</span>
+          
+          <span class="tag tag-sm">IMS</span>
+          
+          <span class="tag tag-sm">Telecom</span>
+          
+        </div>
+      </div>
+      
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">How to Add a Post</div>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+          Create a new file in <code>_posts/</code> with the format:
+        </p>
+        <code style="display: block; font-size: 0.8rem; background: var(--bg-secondary); padding: 0.75rem; border-radius: var(--radius); color: var(--text-primary);">YYYY-MM-DD-post-title.md</code>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.75rem; margin-bottom: 0;">
+          Add the front matter with <code>layout: post</code>, <code>title</code>, and <code>tags</code>.
+        </p>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Recent Archive</div>
+        <ul style="display: flex; flex-direction: column; gap: 0.625rem;">
+          
+          <li style="font-size: 0.875rem; border-bottom: 1px solid var(--border); padding-bottom: 0.625rem;">
+            <a href="/blog/2026/03/02/welcome-to-my-blog/" style="color: var(--text-primary); font-weight: 500; text-decoration: none;">Welcome to My Blog: Thoughts on 5G, IMS, and Beyond</a>
+            <div style="font-size: 0.775rem; color: var(--text-muted); margin-top: 0.2rem;">Mar 02, 2026</div>
+          </li>
+          
+        </ul>
+      </div>
+
+    </aside>
+
+  </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">Cem Kaya<span class="logo-dot">.</span></a>
+      <p class="footer-tagline">Solutions Architect · IMS & 5G Core Network</p>
+    </div>
+
+    <div class="footer-links">
+      <nav class="footer-nav">
+        <a href="/">Home</a>
+        <a href="/resume">Resume</a>
+        <a href="/projects">Projects</a>
+        <a href="/blog">Blog</a>
+      </nav>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/cemkaya" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/cem8kaya" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:cem8kaya@gmail.com" aria-label="Email">
+          <i class="far fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2026 Cem Kaya. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

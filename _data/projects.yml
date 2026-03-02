@@ -1,62 +1,36 @@
 # Add your projects here. Each project will appear as a card on the Projects page.
 # Fields: title, description, tags (list), link (optional), github (optional), featured (true/false)
 
-- title: 5G Core Network Migration Framework
+- title: Voice Quality Analyzer & Diagnostic Tool
   description: >
-    Designed and led end-to-end migration from EPC to 5G Standalone Core for a major telecom operator.
-    Includes AMF, SMF, UPF, PCF deployment blueprints, LLD/HLD documentation, and ATPs.
+    Developed telco-grade RTP stream analyzer with MOS and R-Factor calculations based on ITU-T G.107 E-model,
+    featuring machine learning classifications and full-stack web interface deployed via Docker containers.
+  tags:
+    - AI & Machine Learning
+    - Full-Stack Web
+    - ITU-T G.107
+    - Docker
+  featured: true
+
+- title: 5G KPI Anomaly Detection System
+  description: >
+    Created multi-dimensional 5G Core KPI analysis tool following latest 3GPP releases, incorporating
+    events, alarms, and configuration data correlation for real-time network degradation detection.
   tags:
     - 5G Core
-    - AMF/SMF/UPF
-    - Network Architecture
-    - HLD/LLD
+    - KPI Analysis
+    - 3GPP
+    - Anomaly Detection
   featured: true
 
-- title: IMS Network Performance Analytics
+- title: V2X Communication QoS Predictor
   description: >
-    Python-based analytics pipeline for IMS call quality monitoring. Ingests DIAMETER and SIP signaling
-    data, applies ML algorithms for anomaly detection, and visualizes KPIs through interactive dashboards.
+    Built advanced machine learning models using XGBoost and Neural Networks for sidelink and cellular
+    QoS prediction in connected mobility scenarios, achieving industry-leading accuracy in vehicular communication.
   tags:
-    - Python
-    - Machine Learning
-    - DIAMETER
-    - SIP
-    - Tableau
-  github: "#" # Add your GitHub link
-  featured: true
-
-- title: Multi-Vendor OSS Integration
-  description: >
-    Automated integration of Ericsson ENM, Mavenir XA, and Huawei M2000/U2020 OSS platforms with
-    environmental monitoring systems. Reduced manual reporting time by automating fault correlation.
-  tags:
-    - Ericsson ENM
-    - Mavenir XA
-    - Huawei M2000
-    - Automation
-    - Bash
-  featured: true
-
-- title: C-V2X Protocol Stack Analysis
-  description: >
-    Research and documentation of C-V2X communication protocols (CAM, DENM, BTP) as per ETSI ITS and
-    5GAA standards. Includes protocol flow diagrams and interoperability test cases.
-  tags:
-    - C-V2X
     - V2X
-    - 5GAA
-    - CAM/DENM
-    - Protocol Analysis
-  featured: false
-
-- title: Packet Core Capacity Planning Tool
-  description: >
-    SQL and Python-based tool for automated capacity analysis of PGW, SGW, and PCRF nodes.
-    Generates forecasts using historical KPI data to support proactive scaling decisions.
-  tags:
-    - Python
-    - SQL
-    - PGW/SGW
-    - PCRF
-    - Capacity Planning
-  featured: false
+    - Machine Learning
+    - XGBoost
+    - Neural Networks
+    - QoS Prediction
+  featured: true
