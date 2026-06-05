@@ -1,10 +1,15 @@
 summary: |
-  I design and build software at the intersection of 5G telecommunications and artificial intelligence.
-  With 15+ years of hands-on telecom experience, my projects span the full stack of modern network
-  engineering: from bare-metal protocol parsers in C++ and PFCP-compliant firewalls, to multi-agent
-  LLM orchestrators that diagnose 5G core faults in near-real-time. I work fluently across 3GPP
-  standards, cloud infrastructure (GCP), and applied ML — grounding every project in the real
-  constraints of production telecom environments.
+  Telecom & AI Engineer with 15+ years of end-to-end experience delivering mission-critical network
+  solutions and AI/ML systems for Tier-1 global operators. Proven track record of leading complex
+  technical engagements — from 5G/LTE/VoLTE deep-dive root cause analysis and executive-level
+  performance reporting to the architecture of production AI platforms — across customers including
+  Deutsche Telekom, AT&T, Verizon, Telia Sonera, O2, Ooredoo, Vodafone, and Turkcell. At B-YOND,
+  served as the primary technical resource on multi-operator analytics programs and contributed to
+  C-level strategic reporting and R&D initiatives. At Turkcell, led internal automation and
+  intelligence programs directly supporting executive network operations decisions. Currently at
+  Odine Labs, architecting next-generation AI systems — multi-agent LLM platforms, synthetic data
+  pipelines, and V2X intelligence — at the frontier of telecom and AI convergence. Deep expertise
+  in 3GPP standards, protocol-level engineering (C++/Python), and applied ML for AIOps.
 
 experience:
   - company: "Odine Labs R&D"
@@ -12,40 +17,43 @@ experience:
     period: "April 2025 – Present"
     location: Istanbul, Turkey
     highlights:
-      - Architected cloud-native AI/ML solutions using Kubernetes/OpenShift and GCP Vertex AI, enabling 40% faster model deployment cycles
-      - Led development of conversational AI chatbot and document analyzer system using LangGraph multi-agent orchestration
-      - Designed synthetic data generation system using advanced statistical modeling (Gamma, Lognormal, Beta, Poisson distributions)
-      - Implemented V2X sidelink QoS prediction models with machine learning algorithms
+      - Architecting cloud-native AI/ML platform using Kubernetes/OpenShift and GCP Vertex AI, driving a 40% reduction in model deployment cycle time for telecom R&D use cases
+      - Designed and led delivery of a conversational AI assistant and intelligent document analyzer using LangGraph multi-agent orchestration and FAISS-based RAG pipelines over 3GPP specification corpora
+      - Built a statistically rigorous synthetic telecom data generation engine (Gamma/Lognormal/Beta/Poisson distributions, ARIMA time series, 5 anomaly modes) underpinning ML training workflows
+      - Developed V2X sidelink QoS prediction models (XGBoost / Neural Networks) for connected mobility research, advancing the company's 5G-Advanced and C-V2X portfolio
 
   - company: "B-YOND"
-    title: Data Analyst & Scientist
+    title: Senior Data Analyst & Scientist
     period: "December 2022 – March 2025"
-    location: Canada
+    location: Canada (Remote)
     highlights:
-      - Developed mobility and connectivity prediction models for 5G Core and VoNR services for Verizon, improving network reliability by 25%
-      - Created EPC and 5GC predictive models for 4G-5G migration for AT&T
-      - Delivered real-time anomaly detection system handling millions of concurrent users during remote peak events (World Cup 2023 — Ooredoo Qatar)
-      - Built automated VoLTE diagnostic models for Telenet and Vodafone Ziggo
-      - Developed advanced protocol parsers for SIP, Diameter, GTPv2, HTTP/2, PFCP, and NGAP following latest 3GPP specs
+      - Delivered end-to-end deep-dive analytics and root cause analysis programs for Tier-1 operators including Deutsche Telekom, AT&T, Verizon, Telia Sonera, O2, and Ooredoo, covering 5G SA/NSA, LTE, and VoLTE domains
+      - Developed mobility and connectivity prediction models for 5G Core and VoNR for Verizon, improving network reliability KPIs by 25% and contributing findings to quarterly C-level performance reviews
+      - Architected EPC and 5GC predictive models for 4G-to-5G core migration for AT&T, enabling proactive capacity and quality management during multi-phase network transition
+      - Built and deployed real-time anomaly detection system sustaining millions of concurrent user sessions during the FIFA World Cup 2023 (Ooredoo Qatar) — zero critical incidents during the tournament
+      - Delivered automated VoLTE diagnostic and root cause models for Deutsche Telekom group operators (Telenet, Vodafone Ziggo), significantly reducing mean time to resolution for voice quality degradations
+      - Developed advanced multi-protocol parsers (SIP, Diameter, GTPv2, HTTP/2, PFCP, NGAP) as core components of B-YOND's analytics platform, aligned with latest 3GPP specifications
+      - Contributed to R&D roadmap initiatives and internal C-level technical reporting frameworks across the company's operator portfolio
 
   - company: "Turkcell"
     title: Senior Core Network Optimization Engineer
     period: "September 2019 – February 2022"
     location: Istanbul, Turkey
     highlights:
-      - Developed network operation automation and anomaly detection software from scratch using Python, SQL, and JavaScript, reducing manual intervention by 70%
-      - Implemented Meta Prophet ML models for predictive network performance analysis
-      - Led VoiceX project transitioning from legacy Ericsson/Huawei systems to modern Mavenir IMS architecture with zero service downtime
-      - Integrated multiple OSS platforms including Ericsson ENM, Mavenir XA, and Huawei systems for unified network management
+      - Conceived and built from scratch a network operations automation and ML-driven anomaly detection platform (Python, SQL, JavaScript) that reduced manual intervention across core network operations by 70%, with results reported at executive level
+      - Implemented Meta Prophet time-series ML models for predictive 5G/LTE network performance analysis, feeding proactive capacity planning and C-level KPI dashboards
+      - Spearheaded the VoiceX program — a strategic migration from legacy multi-vendor IMS (Ericsson, Huawei) to a cloud-native Mavenir IMS architecture — executed with zero service downtime across millions of VoLTE subscribers
+      - Integrated Ericsson ENM, Mavenir XA, and Huawei OSS/BSS systems into a unified operational intelligence layer, consolidating performance data across the full 5G/LTE/IMS stack
+      - Led internal R&D investigations into 5G core anomaly signatures and automated root cause classification, contributing to Turkcell's AI-for-Networks strategic initiative
 
-  - company: "Turkcell, Self-Employed, Vodafone Turkey, VOTEL"
-    title: Early Career — Core Network & VoIP Engineer
+  - company: "Vodafone Turkey · VOTEL · Self-Employed · Turkcell"
+    title: Core Network & VoIP Engineer
     period: "2010 – 2019"
-    location: Various
+    location: Turkey / Various
     highlights:
-      - Managed critical voice network infrastructure serving millions of subscribers across multiple operators
-      - Established successful consulting business specializing in VoIP and telecommunications solutions
-      - Developed expertise in diverse switching platforms including Oracle ACME SBC, GENBAND systems, and Asterisk-based solutions
+      - Managed mission-critical voice core infrastructure (IMS, PSTN gateway, SBC) serving tens of millions of subscribers across multiple national operators
+      - Operated an independent VoIP and telecommunications consulting practice, delivering turnkey solutions on Oracle ACME SBC, GENBAND, and Asterisk-based platforms for enterprise and carrier clients
+      - Built deep operational expertise across the full voice and packet core stack — SIP, Diameter, RTP, SS7 — that forms the technical foundation for all subsequent 5G and AI/ML work
 
 skills:
   - category: 5G / Telecom Protocols
