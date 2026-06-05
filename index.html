@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Home
-description: Cem Kaya — Solution Architect & Data Scientist specializing in AI/ML-driven network optimization and predictive analytics.
+description: Cem Kaya — Telecom & AI Engineer specializing in 5G Core Networks, AI/ML Systems, Network Security, and Protocol Engineering.
 ---
 
 <!-- HERO -->
@@ -11,10 +11,11 @@ description: Cem Kaya — Solution Architect & Data Scientist specializing in AI
       <div class="hero-content">
         <div class="hero-badge">Available for consulting</div>
         <h1 class="hero-name">Cem Kaya</h1>
-        <p class="hero-title">Solution Architect &amp; Data Scientist</p>
+        <p class="hero-title">Telecom &amp; AI Engineer</p>
         <p class="hero-description">
-          15+ years of telecommunications expertise, specializing in AI/ML-driven network optimization and predictive analytics for 5G/4G Core networks.
-          I design scalable cloud-native solutions, lead complex migrations, and transform complex telecom data into actionable business intelligence.
+          I design and build software at the intersection of 5G telecommunications and artificial intelligence —
+          from bare-metal protocol parsers in C++ and PFCP-compliant firewalls, to multi-agent LLM orchestrators
+          that diagnose 5G core faults in near-real-time. Deep in 3GPP standards, applied ML, and cloud infrastructure.
         </p>
         <div class="hero-actions">
           <a href="{{ '/resume' | relative_url }}" class="btn btn-primary btn-lg">
@@ -44,20 +45,20 @@ description: Cem Kaya — Solution Architect & Data Scientist specializing in AI
 
     <div class="hero-stats reveal">
       <div class="stat-item">
-        <span class="stat-value">15+</span>
-        <span class="stat-label">Years Experience</span>
+        <span class="stat-value">9</span>
+        <span class="stat-label">Open-Source Projects</span>
       </div>
       <div class="stat-item">
-        <span class="stat-value">3</span>
-        <span class="stat-label">Vendor Platforms</span>
+        <span class="stat-value">15+</span>
+        <span class="stat-label">Protocols Implemented</span>
       </div>
       <div class="stat-item">
         <span class="stat-value">5G</span>
-        <span class="stat-label">Core Expertise</span>
+        <span class="stat-label">Core Networks</span>
       </div>
       <div class="stat-item">
-        <span class="stat-value">5+</span>
-        <span class="stat-label">Years Data Sci</span>
+        <span class="stat-value">AI</span>
+        <span class="stat-label">Applied to Telecom</span>
       </div>
     </div>
   </div>
@@ -70,7 +71,7 @@ description: Cem Kaya — Solution Architect & Data Scientist specializing in AI
       <div class="about-text">
         <div class="section-header">
           <span class="section-label">About Me</span>
-          <h2 class="section-title">Building the backbone of modern telecommunications</h2>
+          <h2 class="section-title">Engineering at the intersection of 5G and AI</h2>
         </div>
         <p class="lead">
           {{ site.data.resume.summary }}
@@ -79,24 +80,24 @@ description: Cem Kaya — Solution Architect & Data Scientist specializing in AI
 
       <div class="about-features reveal">
         <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-network-wired"></i></div>
-          <h4 class="feature-title">5G Core</h4>
-          <p class="feature-desc">AMF, SMF, UPF, PCF design and deployment</p>
+          <div class="feature-icon"><i class="fas fa-tower-broadcast"></i></div>
+          <h4 class="feature-title">5G Core Networks</h4>
+          <p class="feature-desc">3GPP standards, NF implementation, Open5GS, UERANSIM</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-phone-alt"></i></div>
-          <h4 class="feature-title">IMS / VoLTE</h4>
-          <p class="feature-desc">CSCF, TAS, SBC, HSS architecture</p>
+          <div class="feature-icon"><i class="fas fa-brain"></i></div>
+          <h4 class="feature-title">AI/ML Systems</h4>
+          <p class="feature-desc">Multi-agent LLM, RAG, anomaly detection, fine-tuning</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-code"></i></div>
-          <h4 class="feature-title">Data & ML</h4>
-          <p class="feature-desc">Python, SQL analytics & ML pipelines</p>
+          <div class="feature-icon"><i class="fas fa-sitemap"></i></div>
+          <h4 class="feature-title">Protocol Engineering</h4>
+          <p class="feature-desc">C++17 packet-level parsers: SIP, GTP, PFCP, NGAP, NAS</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
-          <h4 class="feature-title">Documentation</h4>
-          <p class="feature-desc">HLD, LLD, ISD, ATP technical writing</p>
+          <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+          <h4 class="feature-title">Network Security</h4>
+          <p class="feature-desc">CUPS Shield, HMAC auth, JWT/RBAC, threat scoring</p>
         </div>
       </div>
     </div>
@@ -139,7 +140,7 @@ description: Cem Kaya — Solution Architect & Data Scientist specializing in AI
     <div class="section-header">
       <span class="section-label">Portfolio</span>
       <h2 class="section-title">Featured Projects</h2>
-      <p class="section-subtitle">A selection of technical projects spanning network architecture, analytics, and automation.</p>
+      <p class="section-subtitle">A selection of technical projects spanning 5G core networks, AI/ML systems, protocol engineering, and mobile development.</p>
     </div>
     <div class="projects-grid">
       {% assign featured = site.data.projects | where: "featured", true %}
@@ -218,7 +219,7 @@ description: Cem Kaya — Solution Architect & Data Scientist specializing in AI
     <span class="section-label">Let's Connect</span>
     <h2 class="section-title">Have a project in mind?</h2>
     <p class="section-subtitle">
-      Whether you need network architecture consultation, technical documentation, or a data analytics solution — I'd love to talk.
+      Whether you need 5G core expertise, AI/ML systems for telecom, or protocol-level engineering — I'd love to talk.
     </p>
     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
       <a href="mailto:{{ site.author.email }}" class="btn btn-primary btn-lg">

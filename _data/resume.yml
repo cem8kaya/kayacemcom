@@ -1,5 +1,10 @@
 summary: |
-  Solution Architect and Data Scientist with 15+ years of telecommunications expertise, specializing in AI/ML-driven network optimization and predictive analytics for 5G/4G Core networks. Proven track record of architecting scalable cloud-native solutions for major telecom operators. Expert in transforming complex telecom data into actionable business intelligence while leading cross-functional teams to deliver enterprise-grade solutions that improve network performance and reduce operational costs.
+  I design and build software at the intersection of 5G telecommunications and artificial intelligence.
+  With 15+ years of hands-on telecom experience, my projects span the full stack of modern network
+  engineering: from bare-metal protocol parsers in C++ and PFCP-compliant firewalls, to multi-agent
+  LLM orchestrators that diagnose 5G core faults in near-real-time. I work fluently across 3GPP
+  standards, cloud infrastructure (GCP), and applied ML — grounding every project in the real
+  constraints of production telecom environments.
 
 experience:
   - company: "Odine Labs R&D"
@@ -8,8 +13,8 @@ experience:
     location: Istanbul, Turkey
     highlights:
       - Architected cloud-native AI/ML solutions using Kubernetes/OpenShift and GCP Vertex AI, enabling 40% faster model deployment cycles
-      - Led development of conversational AI chatbot and document analyzer system
-      - Designed synthetic data generation system from scratch using advanced statistical modeling techniques
+      - Led development of conversational AI chatbot and document analyzer system using LangGraph multi-agent orchestration
+      - Designed synthetic data generation system using advanced statistical modeling (Gamma, Lognormal, Beta, Poisson distributions)
       - Implemented V2X sidelink QoS prediction models with machine learning algorithms
 
   - company: "B-YOND"
@@ -19,7 +24,7 @@ experience:
     highlights:
       - Developed mobility and connectivity prediction models for 5G Core and VoNR services for Verizon, improving network reliability by 25%
       - Created EPC and 5GC predictive models for 4G-5G migration for AT&T
-      - Delivered real-time anomaly detection system handling millions of concurrent users during remote peak events (World Cup 2023 - Ooredoo Qatar)
+      - Delivered real-time anomaly detection system handling millions of concurrent users during remote peak events (World Cup 2023 — Ooredoo Qatar)
       - Built automated VoLTE diagnostic models for Telenet and Vodafone Ziggo
       - Developed advanced protocol parsers for SIP, Diameter, GTPv2, HTTP/2, PFCP, and NGAP following latest 3GPP specs
 
@@ -34,7 +39,7 @@ experience:
       - Integrated multiple OSS platforms including Ericsson ENM, Mavenir XA, and Huawei systems for unified network management
 
   - company: "Turkcell, Self-Employed, Vodafone Turkey, VOTEL"
-    title: Early Career Experience
+    title: Early Career — Core Network & VoIP Engineer
     period: "2010 – 2019"
     location: Various
     highlights:
@@ -43,57 +48,90 @@ experience:
       - Developed expertise in diverse switching platforms including Oracle ACME SBC, GENBAND systems, and Asterisk-based solutions
 
 skills:
-  - category: AI/ML & Data Science
+  - category: 5G / Telecom Protocols
     items:
-      - Python
-      - R
-      - Machine Learning
-      - Deep Learning
+      - AMF
+      - SMF
+      - UPF
+      - AUSF / UDM / PCF
+      - NRF / NWDAF
+      - SIP
+      - DIAMETER
+      - GTPv1/v2
+      - PFCP
+      - NGAP / S1AP / X2AP
+      - NAS (LTE/5G)
+      - RTP/RTCP
+      - HTTP/2 (5G SBA)
+      - TS 23.501/502/503
+      - TS 23.288
+      - TS 29.244
+      - TS 33.501/513
+
+  - category: AI / ML
+    items:
+      - LangGraph Multi-Agent
+      - RAG / FAISS
+      - QLoRA Fine-Tuning
+      - HuggingFace PEFT
+      - Isolation Forest
+      - DTW Pattern Matching
+      - Z-Score Anomaly Detection
+      - Bayesian Confidence Scoring
       - Predictive Modeling
-      - Statistical Analysis
-      - Feature Engineering
-      - Real-time Analytics
-
-  - category: Cloud & Architecture
-    items:
-      - OpenStack
-      - Kubernetes/OpenShift
-      - GCP
-      - Vertex AI
-      - Docker
-      - Microservices
-      - CI/CD
-      - DevOps
-      - Solution Architecture
-
-  - category: Telecommunications
-    items:
-      - 5G/4G Core Networks (EPC, 5GC)
-      - IMS
-      - V2X Communications
-      - Network Function Virtualization (VNF/CNF)
-      - Telecom Protocol Stack (SIP, Diameter, GTP, NGAP, PFCP)
-
-  - category: Development & Tools
-    items:
-      - C++
-      - Kotlin
-      - Flutter
-      - SQL
-      - Bash
-      - Tableau
-      - Alteryx
-      - Elasticsearch
-      - Grafana
-      - Prometheus
-      - Jenkins
-      - Git
+      - Real-Time Analytics
 
   - category: Languages
     items:
-      - English (Advanced)
-      - Dutch (Intermediate)
-      - French (Basic)
+      - Python
+      - C++ (C++17)
+      - Swift
+      - JavaScript (ES6+)
+      - Bash
+      - SQL
+      - R
+
+  - category: Frameworks & Tools
+    items:
+      - Open5GS
+      - UERANSIM
+      - Scapy
+      - Flask
+      - FastAPI
+      - CMake
+      - Docker
+      - Kubernetes
+      - nDPI
+      - libpcap
+      - OpenSSL
+
+  - category: Cloud & Infra
+    items:
+      - Google Cloud Platform (GCP)
+      - GCP Vertex AI
+      - Prometheus
+      - Grafana
+      - MongoDB
+      - SQLite3
+      - OpenStack
+      - Jenkins / CI/CD
+
+  - category: Frontend
+    items:
+      - Vanilla JS SPA
+      - D3.js
+      - Chart.js
+      - Bootstrap 5
+      - WebSocket Streaming
+      - React JSX
+
+  - category: Mobile
+    items:
+      - iOS (Swift)
+      - CoreMotion
+      - AVFoundation
+      - App Store Submission
+      - On-Device ML
 
 education:
   - degree: "M.Sc. Management Information Systems"
@@ -107,18 +145,18 @@ education:
     location: Turkey
 
 certifications:
-  - name: "IELTS 7.0 (Credential ID:  A3-TR002-S-1950691)"
+  - name: "IELTS 7.0 (Credential ID: A3-TR002-S-1950691)"
     issuer: IELTS
-    year: 
-  - name: "Business Analyst Certification"
-    issuer: Udacity
-    year: 
+    year:
   - name: "Nokia Vo5G Protocol Stack and Standards, IMS Protocols and Call Flows"
     issuer: Nokia
-    year: 
+    year:
   - name: "3GPP 5G Security Specification"
     issuer: 3GPP
-    year: 
+    year:
+  - name: "Business Analyst Certification"
+    issuer: Udacity
+    year:
   - name: "Multiple Certifications in Python, Machine Learning, and Data Visualization"
     issuer: Kaggle
     year:
