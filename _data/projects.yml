@@ -1,36 +1,155 @@
-# Add your projects here. Each project will appear as a card on the Projects page.
-# Fields: title, description, tags (list), link (optional), github (optional), featured (true/false)
+# Projects data — sourced from technical portfolio (June 2026)
 
-- title: Voice Quality Analyzer & Diagnostic Tool
+- title: "Open5GS AI/ML Laboratory"
   description: >
-    Developed telco-grade RTP stream analyzer with MOS and R-Factor calculations based on ITU-T G.107 E-model,
-    featuring machine learning classifications and full-stack web interface deployed via Docker containers.
-  tags:
-    - AI & Machine Learning
-    - Full-Stack Web
-    - ITU-T G.107
-    - Docker
-  featured: true
-
-- title: 5G KPI Anomaly Detection System
-  description: >
-    Created multi-dimensional 5G Core KPI analysis tool following latest 3GPP releases, incorporating
-    events, alarms, and configuration data correlation for real-time network degradation detection.
+    Fully simulated 5G Standalone Core Network deployed on GCP, operated via Google Colab notebooks.
+    Deploys all 7 core NFs (AMF/SMF/UPF/AUSF/UDM/PCF/NRF) with UERANSIM. Executes 8 labeled traffic
+    scenarios for ML research including anomaly injection (scan, flood, Slowloris, exfiltration),
+    handover simulation, PDU session lifecycle, QoS class comparison (5QI 1/8/9), and network slicing
+    (SST 1/2/3). Includes full ETL pipeline and an iPhone IoT sensor (SeismoSense) feeding real
+    accelerometer data over HTTP as an mMTC slice source. Key finding: documented the gtp5g kernel
+    bypass that makes tcpdump/eBPF ineffective on Open5GS GTP-U data plane.
+  github: "https://github.com/cem8kaya/open5gs-ai-lab"
   tags:
     - 5G Core
-    - KPI Analysis
-    - 3GPP
-    - Anomaly Detection
+    - Python
+    - GCP
+    - AI/ML
+    - Open5GS
+    - UERANSIM
   featured: true
 
-- title: V2X Communication QoS Predictor
+- title: "Open5GS NWDAF — C++ Reference Implementation"
   description: >
-    Built advanced machine learning models using XGBoost and Neural Networks for sidelink and cellular
-    QoS prediction in connected mobility scenarios, achieving industry-leading accuracy in vehicular communication.
+    Production-grade, standalone C++ implementation of the Network Data Analytics Function (NWDAF)
+    compliant with 3GPP TS 23.288 v17 and TS 29.520 v17. Implements all 7 analytics IDs (NF_LOAD,
+    UE_MOBILITY, UE_COMMUNICATION, ABNORMAL_BEHAVIOUR, QoS_SUSTAINABILITY, SERVICE_EXPERIENCE,
+    NETWORK_PERFORMANCE), an embedded Isolation Forest and EWMA predictor (no Python dependency),
+    and the full TS 29.520 SBI REST API with subscription management. Packaged as a systemd service
+    with React JSX real-time KPI dashboard and Catch2 unit tests.
+  github: "https://github.com/cem8kaya/open5gs-nwdaf"
   tags:
-    - V2X
-    - Machine Learning
-    - XGBoost
-    - Neural Networks
-    - QoS Prediction
+    - 5G Core
+    - C++
+    - AI/ML
+    - Grafana
+    - 3GPP TS 23.288
   featured: true
+
+- title: "Digital Twin–Based Root Cause Analysis Agent"
+  description: >
+    Multi-agent cognitive AI system for automated Root Cause Analysis of 5G core network faults.
+    Uses LangGraph StateGraph with Master Orchestrator + 3 domain-specialist agents (RAN Expert,
+    5G Core Expert, Security & Policy). Incorporates a Digital Twin simulator generating synthetic
+    KPI telemetry for 13 fault signatures using statistical distributions, DTW-based fault matching
+    across 15 weighted KPI metrics with Bayesian confidence scoring, FAISS RAG over 12+ 3GPP spec
+    chunks, and LLM failover chain (Gemini-2.0-Flash → Gemini-1.5-Flash → AirLLM Llama-3.1-8B).
+    Detects ROGUE_UE_ATTACK at 41.87% DTW confidence in under 3 minutes MTRCA.
+  github: "https://github.com/cem8kaya/digital-twin-based-root-cause-analysis-agent"
+  tags:
+    - AI/ML
+    - Python
+    - LangGraph
+    - 5G Core
+    - RAG
+  featured: true
+
+- title: "Callflow Visualizer — Enhanced DPI"
+  description: >
+    Enterprise-grade network packet analysis and visualization platform for telecom protocol analysis,
+    ingesting PCAP files and correlating distributed 3GPP sessions. Implements 15+ protocol parsers
+    in C++17 (SIP, RTP/RTCP, DIAMETER Gx/Gy/Rx/S6a, GTPv1/v2-C, PFCP, S1AP, X2AP, NGAP, NAS,
+    HTTP/2 with HPACK decompression, SCTP, DNS) with session correlation across 20+ identifiers
+    (IMSI, TEID, SEID, GUTI). Features D3.js ladder diagrams, WebSocket real-time streaming,
+    JWT+RBAC security, and ~34,700 packets/second throughput.
+  github: "https://github.com/cem8kaya/flowvisualizerenhanceddpi"
+  tags:
+    - C++
+    - Protocol Analysis
+    - D3.js
+    - Docker
+    - Kubernetes
+  featured: true
+
+- title: "5G LLM Engine"
+  description: >
+    Production-architecture AI engine for 5G network analysis and intelligent troubleshooting built
+    around a QLoRA fine-tuned telecom domain LLM. End-to-end pipeline: raw telecom data (alarms,
+    KPI metrics, SIP/DIAMETER/GTPv2 logs, PCAP) → normalizer → structured JSON → fine-tuned LLM +
+    RAG → RCA + explanation + troubleshooting suggestion. Uses HuggingFace PEFT + TRL SFTTrainer
+    on 4-bit quantized Kara-Kumru-v1.0-2B base model, FAISS/Chroma RAG over 3GPP specs, and
+    FastAPI REST with Pydantic schemas. Covers AMF/SMF/UPF/PCF/UDM/NRF, IMS, GTPv2-C, NG-RAN.
+  github: "https://github.com/cem8kaya/5g-llm-engine"
+  tags:
+    - AI/ML
+    - Python
+    - LLM
+    - 5G Core
+    - FastAPI
+  featured: false
+
+- title: "5GC Secure CUPS Shield — PFCP Firewall"
+  description: >
+    High-performance PFCP Firewall implementing CUPS security architecture per 3GPP TS 29.244 and
+    TS 33.513. Features dedicated control/user plane processing pipelines (Sxa/Sxb), per-IP DoS
+    protection with configurable thresholds and automated IP blocking, token bucket rate limiter
+    with QoS-aware traffic classification, HMAC-SHA256 packet authentication, RSA digital signatures
+    with key rotation, dynamic threat scoring with automatic blacklist/whitelist management, and
+    thread-safe lock-free atomic design with multi-level syslog integration.
+  github: "https://github.com/cem8kaya/5gc-secure-cups-shield"
+  tags:
+    - C++
+    - Network Security
+    - 5G Core
+    - Protocol Analysis
+    - 3GPP TS 29.244
+  featured: false
+
+- title: "PFCP Packet Generator"
+  description: >
+    Protocol-level testing tool using Python and Scapy for generating and replaying compliant PFCP
+    traffic in 5G core network test environments. Generates all major PFCP message types (Association
+    Setup, Session Establishment/Modification/Deletion, Heartbeat) with 12 Information Elements per
+    TS 29.244 (Node ID, F-SEID, PDR, FAR, QER, URR, Cause, Gate Status, MBR, GBR, QFI, Recovery
+    Time Stamp). Exports to PCAP for replay via Wireshark, tshark, or Scapy.
+  github: "https://github.com/cem8kaya/pfcp_packet_generator"
+  tags:
+    - Python
+    - Protocol Analysis
+    - 5G Core
+    - Scapy
+  featured: false
+
+- title: "Telecom Synthetic Data Generator — Web UI"
+  description: >
+    Flask-based web application for generating statistically rigorous synthetic telecom network data
+    with an interactive browser UI. Supports 4 statistical distributions (Gamma for latency, Lognormal
+    for throughput, Beta for success rates, Poisson for packet counts), ARIMA-based time series modeling,
+    seasonality injection, and 5 anomaly types (Degradation, Spike, Outage, Congestion, Oscillation).
+    REST API for generate/download (CSV/Parquet/JSON) and Chart.js interactive visualizations.
+  github: "https://github.com/cem8kaya/telecom-web-generator"
+  tags:
+    - Python
+    - Flask
+    - AI/ML
+    - Chart.js
+    - Bootstrap 5
+  featured: false
+
+- title: "SeismoSense — iPhone Earthquake Detector"
+  description: >
+    Native iOS application turning an iPhone into a fully offline seismograph using the classical
+    STA/LTA (Short-Term Average / Long-Term Average) algorithm over CoreMotion accelerometer data
+    at 100Hz — the same method used in professional seismology. Alert threshold calibrated at STA/LTA
+    ratio ≥ 3.0. Features iOS Focus mode bypass for time-sensitive seismic alerts, background
+    overnight monitoring, geolocation tagging, and a personal seismic event log. Submitted to the
+    Apple App Store (bilingual: English + Turkish). Also feeds real accelerometer data into the
+    Open5GS AI Lab as an mMTC IoT sensor source via HTTP POST.
+  github: "https://github.com/cem8kaya/seismosense"
+  tags:
+    - iOS
+    - Swift
+    - CoreMotion
+    - On-Device ML
+    - App Store
+  featured: false
