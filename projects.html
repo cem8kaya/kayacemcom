@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Projects
-description: Technical projects by Cem Kaya — 5G Core architecture, IMS analytics, OSS automation, and telecom protocol analysis.
+description: Technical projects by Cem Kaya — 5G Core networks, AI/ML systems, protocol engineering, and mobile development.
 ---
 
 <div class="page-hero">
   <div class="container">
     <h1 class="page-title">Projects</h1>
-    <p class="page-subtitle">Technical work in network architecture, analytics, and automation.</p>
+    <p class="page-subtitle">9 open-source projects spanning 5G core, AI/ML, protocol engineering, and iOS development.</p>
   </div>
 </div>
 
@@ -17,9 +17,11 @@ description: Technical projects by Cem Kaya — 5G Core architecture, IMS analyt
     <div class="project-filter" id="filter-bar">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="5G Core">5G Core</button>
+      <button class="filter-btn" data-filter="AI/ML">AI/ML</button>
+      <button class="filter-btn" data-filter="C++">C++</button>
       <button class="filter-btn" data-filter="Python">Python</button>
       <button class="filter-btn" data-filter="Protocol Analysis">Protocol Analysis</button>
-      <button class="filter-btn" data-filter="Automation">Automation</button>
+      <button class="filter-btn" data-filter="iOS">iOS</button>
     </div>
 
     <div class="projects-page-grid" id="projects-grid">
@@ -27,14 +29,18 @@ description: Technical projects by Cem Kaya — 5G Core architecture, IMS analyt
       <div class="project-card reveal" data-tags="{{ project.tags | join: ',' }}">
         <div class="project-card-header">
           <div class="project-icon">
-            {% if project.tags contains "5G Core" or project.tags contains "Network Architecture" %}
-            <i class="fas fa-tower-broadcast"></i>
-            {% elsif project.tags contains "Python" or project.tags contains "Machine Learning" %}
+            {% if project.tags contains "iOS" %}
+            <i class="fab fa-apple"></i>
+            {% elsif project.tags contains "AI/ML" or project.tags contains "LangGraph" or project.tags contains "LLM" %}
             <i class="fas fa-brain"></i>
-            {% elsif project.tags contains "Automation" %}
-            <i class="fas fa-robot"></i>
+            {% elsif project.tags contains "Network Security" %}
+            <i class="fas fa-shield-halved"></i>
             {% elsif project.tags contains "Protocol Analysis" %}
             <i class="fas fa-sitemap"></i>
+            {% elsif project.tags contains "5G Core" %}
+            <i class="fas fa-tower-broadcast"></i>
+            {% elsif project.tags contains "C++" %}
+            <i class="fas fa-microchip"></i>
             {% else %}
             <i class="fas fa-diagram-project"></i>
             {% endif %}
@@ -63,12 +69,13 @@ description: Technical projects by Cem Kaya — 5G Core architecture, IMS analyt
   </div>
 </section>
 
-<!-- ADD PROJECT CTA -->
+<!-- GitHub CTA -->
 <section style="padding: 4rem 0; background: var(--bg-primary);">
   <div class="container text-center">
     <p class="text-muted" style="font-size: 0.9rem;">
-      <i class="fas fa-info-circle"></i>
-      &nbsp;To add a new project, edit <code>_data/projects.yml</code> — no HTML changes needed.
+      <i class="fab fa-github"></i>
+      &nbsp;All projects are open-source — explore the source code at
+      <a href="https://github.com/cem8kaya" target="_blank" rel="noopener">github.com/cem8kaya</a>
     </p>
   </div>
 </section>
