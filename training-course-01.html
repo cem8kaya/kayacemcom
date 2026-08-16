@@ -1,0 +1,97 @@
+---
+layout: default
+title: "Training — Course 01: 5G Core Operations in Practice"
+permalink: /training/course/01/
+description: "Course 01 — 5G Core Operations in Practice. Aims, module breakdown and text-based call-flow diagrams from the 5G Core & IMS lab program."
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="t-hero-badge"><span class="t-hero-num">01</span><span class="t-hero-tag">5G Core Track</span></div>
+    <h1 class="page-title">5G Core Operations in Practice</h1>
+    <p class="page-subtitle">Operate, monitor and troubleshoot a live 5G Standalone core — and interpret every line of its output.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.25rem;">
+  <div class="container">
+    <p class="t-crumb"><a href="{{ '/training/' | relative_url }}">Training</a> &nbsp;/&nbsp; Course 01</p>
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Aims — what you can do after</p>
+      <ul class="t-aims">
+        <li><i class="fas fa-check"></i><span>Explain the role of each 5G Core network function and how it maps to a running service.</span></li>
+<li><i class="fas fa-check"></i><span>Run a daily health check of a live core and interpret every line of its output.</span></li>
+<li><i class="fas fa-check"></i><span>Control the network-function and RAN/UE lifecycle, including clean deregistration.</span></li>
+<li><i class="fas fa-check"></i><span>Monitor the core via logs, metrics and live throughput counters.</span></li>
+<li><i class="fas fa-check"></i><span>Manage subscribers and edit configuration safely.</span></li>
+<li><i class="fas fa-check"></i><span>Query NWDAF analytics and generate labelled traffic datasets for ML.</span></li>
+<li><i class="fas fa-check"></i><span>Diagnose and repair the most common core faults using auto-diagnosis and runbooks.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-section"><p class="t-sec-label">The core, at a glance</p><div class="t-diagram"><div class="t-hflow"><span class="t-hb">AMF</span> <span class="t-ha">&rarr;</span> <span class="t-hb">SMF</span> <span class="t-ha">&rarr;</span> <span class="t-hb">UPF</span> <span class="t-ha">&rarr;</span> <span class="t-hb">AUSF</span> <span class="t-ha">&rarr;</span> <span class="t-hb">UDM</span> <span class="t-ha">&rarr;</span> <span class="t-hb">PCF</span> <span class="t-ha">&rarr;</span> <span class="t-hb">NRF</span> <span class="t-ha">&rarr;</span> <span class="t-hb">NWDAF</span></div></div><p class="t-figcap"><strong>Service-based architecture:</strong> each network function is an independent service that discovers the others through the NRF. You learn what each one does and how to read its health.</p></div>
+<div class="t-section"><p class="t-sec-label">Flow — device registration</p><pre class="t-ladder"><span class="h">  UE            gNB            AMF          AUSF/UDM</span>
+   |             |              |               |
+   |--Registration Request-----&gt;|               |     RRC + NAS
+<span class="c">   #  (SUCI / 5G-GUTI, no key yet)</span>
+   |             |              |--Auth Request-&gt;|     fetch a 5G-AKA vector
+<span class="w">   |&lt;------------ Authentication Request --------|     RAND + AUTN</span>
+<span class="c">   #  USIM verifies the network, computes RES</span>
+   |------------- Authentication Response ------&gt;|     RES == XRES ?
+   |&lt;------------ Security Mode Command ---------|     ciphering + integrity on
+<span class="a">   |&lt;------------ Registration Accept -----------|     5G-GUTI assigned</span>
+<span class="a">   |--PDU Session Establishment----------------&gt;|      a data bearer comes up</span></pre><p class="t-figcap">The 5G registration you learn to read line by line.</p></div>
+<div class="t-section"><p class="t-sec-label">Method — localize before you touch</p><pre class="t-ladder"><span class="h">  "Something is wrong"</span>
+   |
+   +-- Is the NF service even up?  ------&gt; systemctl / health board
+   |
+   +-- Does the UE register?
+<span class="w">   |     +-- no auth response  ---------&gt; AUSF/UDM or key material</span>
+<span class="w">   |     +-- rejects at NAS  -----------&gt; subscriber profile / slice</span>
+   |
+   +-- Does a PDU session come up?
+<span class="r">   |     +-- no  ----------------------&gt; SMF / UPF / GTP path</span>
+   |
+   +-- Does traffic flow?
+<span class="r">         +-- no  ----------------------&gt; UPF forwarding / NAT / routes</span></pre><p class="t-figcap">The daily fault-localization habit — which layer is broken?</p></div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Module breakdown</p>
+      <div class="t-mods">
+        <div class="t-mod"><span class="t-mn">0</span><div><span class="t-mt">Lab bootstrap</span><span class="t-mtime">15 min</span><div class="t-md">The shared helpers and the health board every later module reads.</div></div></div>
+<div class="t-mod"><span class="t-mn">1</span><div><span class="t-mt">Core architecture &amp; the health dashboard</span><span class="t-mtime">30 min</span><div class="t-md">Every NF, and how to read the core's health at a glance.</div></div></div>
+<div class="t-mod"><span class="t-mn">2</span><div><span class="t-mt">NF service control</span><span class="t-mtime">20 min</span><div class="t-md">Start, stop and inspect network functions safely.</div></div></div>
+<div class="t-mod"><span class="t-mn">3</span><div><span class="t-mt">RAN &amp; UE operations</span><span class="t-mtime">30 min</span><div class="t-md">Drive the simulated gNB and UE lifecycle, including clean deregistration.</div></div></div>
+<div class="t-mod"><span class="t-mn">4</span><div><span class="t-mt">Monitoring, logs &amp; metrics</span><span class="t-mtime">30 min</span><div class="t-md">journald, metrics and live throughput — the operator's instruments.</div></div></div>
+<div class="t-mod"><span class="t-mn">5</span><div><span class="t-mt">Subscriber management</span><span class="t-mtime">20 min</span><div class="t-md">List, add and remove subscribers in the database.</div></div></div>
+<div class="t-mod"><span class="t-mn">6</span><div><span class="t-mt">Configuration management</span><span class="t-mtime">15 min</span><div class="t-md">Edit NF configuration safely, backup-first.</div></div></div>
+<div class="t-mod"><span class="t-mn">7</span><div><span class="t-mt">NWDAF analytics &amp; ML lifecycle</span><span class="t-mtime">20 min</span><div class="t-md">Query network-data analytics and check model-training readiness.</div></div></div>
+<div class="t-mod"><span class="t-mn">8</span><div><span class="t-mt">Traffic scenarios &amp; datasets</span><span class="t-mtime">25 min</span><div class="t-md">Generate labelled traffic for downstream ML pipelines.</div></div></div>
+<div class="t-mod"><span class="t-mn">9</span><div><span class="t-mt">Troubleshooting lab</span><span class="t-mtime">40 min</span><div class="t-md">Guided fault injection and repair — the localization method in practice.</div></div></div>
+<div class="t-mod"><span class="t-mn">10</span><div><span class="t-mt">Backup &amp; restore</span><span class="t-mtime">10 min</span><div class="t-md">Snapshot and restore the whole lab: configs, database, models.</div></div></div>
+      </div>
+    </div>
+
+    <div class="t-mastery">
+      <h3>What operating the core looks like</h3>
+      <ul>
+        <li><i class="fas fa-arrow-right"></i><span>Read a daily health check and know what every green and red line means.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Localize a fault to one network function or interface before restarting anything.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Turn a live core into labelled datasets — the raw material for the ML course.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-pagenav">
+      <a href="{{ '/training/course/00/' | relative_url }}">&larr; Course 00 — Lab Setup</a>
+      <a href="{{ '/training/course/02/' | relative_url }}">Course 02 — IMS Core &amp; VoNR &rarr;</a>
+    </div>
+
+  </div>
+</section>
