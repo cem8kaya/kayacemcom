@@ -1,0 +1,72 @@
+---
+layout: default
+title: "Training — Course 03: Advanced 5G Core Engineering"
+permalink: /training/course/03/
+description: "Course 03 — Advanced 5G Core Engineering. Aims, module breakdown and text-based call-flow diagrams from the 5G Core & IMS lab program."
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="t-hero-badge"><span class="t-hero-num">03</span><span class="t-hero-tag">5G Core Track</span></div>
+    <h1 class="page-title">Advanced 5G Core Engineering</h1>
+    <p class="page-subtitle">Change the network, not just watch it — slicing, QoS, security hardening and signalling forensics.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.25rem;">
+  <div class="container">
+    <p class="t-crumb"><a href="{{ '/training/' | relative_url }}">Training</a> &nbsp;/&nbsp; Course 03</p>
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Aims — what you can do after</p>
+      <ul class="t-aims">
+        <li><i class="fas fa-check"></i><span>Harden the core to TS 33.501: order the security algorithms and enable identity concealment with your own key pair.</span></li>
+<li><i class="fas fa-check"></i><span>Engineer network slices end to end, and diagnose rejected or mis-routed slices.</span></li>
+<li><i class="fas fa-check"></i><span>Differentiate QoS with subscription rate limits, policy rules and per-slice traffic shaping.</span></li>
+<li><i class="fas fa-check"></i><span>Perform signalling forensics: query the NF discovery API and decompose a registration at the message level.</span></li>
+<li><i class="fas fa-check"></i><span>Investigate mobility and session resilience — what core state survives a handover or teardown.</span></li>
+<li><i class="fas fa-check"></i><span>Engineer a KPI pipeline: live exporters, a fast scrape loop, standardized metrics.</span></li>
+<li><i class="fas fa-check"></i><span>Understand how a digital-twin root-cause agent automates the discipline you practised by hand.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-section"><p class="t-sec-label">The slicing chain — every link must agree</p><div class="t-diagram"><div class="t-hflow"><span class="t-hb">S-NSSAI (AMF)</span> <span class="t-ha">&rarr;</span> <span class="t-hb">DNN (SMF)</span> <span class="t-ha">&rarr;</span> <span class="t-hb">subnet (UPF)</span></div></div><p class="t-figcap">A slice is only real when the identifier at the AMF, the data network at the SMF and the subnet at the UPF all line up. Diagnose a rejected slice by finding the broken link.</p></div>
+<div class="t-section"><p class="t-sec-label">Three layers where QoS is actually enforced</p><div class="t-diagram"><div class="t-vflow"><div class="t-step"><span class="t-sk">Subscription</span><span class="t-sv">The subscriber's aggregate rate ceiling (<strong>AMBR</strong>) — what the profile allows.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Policy</span><span class="t-sv">The <strong>PCF</strong> policy / PCC rules — what the network decides per session.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Enforcement</span><span class="t-sv">Linux <strong>traffic control</strong> per slice — what the packets actually experience.</span></div></div></div></div>
+<div class="t-section"><p class="t-sec-label">From telemetry to root cause</p><div class="t-diagram"><div class="t-hflow"><span class="t-hb">Telemetry</span> <span class="t-ha">&rarr;</span> <span class="t-hb">KPIs</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Anomaly</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Root cause</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Action</span></div></div><p class="t-figcap">The engineering feeds a loop: the KPIs and labelled scenarios you produce become the training data for a digital-twin root-cause agent — and where an engineer's judgement still beats automation.</p></div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Module breakdown</p>
+      <div class="t-mods">
+        <div class="t-mod"><span class="t-mn">0</span><div><span class="t-mt">Advanced toolkit &amp; backup-first discipline</span><span class="t-mtime">15 min</span><div class="t-md">The change-safely habit drilled throughout: back up before you touch.</div></div></div>
+<div class="t-mod"><span class="t-mn">1</span><div><span class="t-mt">Security hardening (TS 33.501)</span><span class="t-mtime">45 min</span><div class="t-md">Algorithm order and subscriber-identity concealment.</div></div></div>
+<div class="t-mod"><span class="t-mn">2</span><div><span class="t-mt">Network slicing engineering</span><span class="t-mtime">45 min</span><div class="t-md">The slicing chain end to end, and why a slice gets rejected.</div></div></div>
+<div class="t-mod"><span class="t-mn">3</span><div><span class="t-mt">QoS differentiation engineering</span><span class="t-mtime">40 min</span><div class="t-md">Subscription limits, policy rules and per-slice shaping — and one slice starving another.</div></div></div>
+<div class="t-mod"><span class="t-mn">4</span><div><span class="t-mt">Signalling forensics</span><span class="t-mtime">35 min</span><div class="t-md">The NF discovery API, message-level tracing, a compliance audit.</div></div></div>
+<div class="t-mod"><span class="t-mn">5</span><div><span class="t-mt">Mobility &amp; session resilience</span><span class="t-mtime">35 min</span><div class="t-md">Handover and teardown — what state survives, and how to spot drift.</div></div></div>
+<div class="t-mod"><span class="t-mn">6</span><div><span class="t-mt">Performance &amp; KPI engineering</span><span class="t-mtime">30 min</span><div class="t-md">Live exporters and standardized KPI computation.</div></div></div>
+<div class="t-mod"><span class="t-mn">7</span><div><span class="t-mt">AI-assisted root cause analysis</span><span class="t-mtime">30 min</span><div class="t-md">How the telemetry you produced feeds a digital-twin RCA agent — honestly framed.</div></div></div>
+      </div>
+    </div>
+
+    <div class="t-mastery">
+      <h3>What engineering the core looks like</h3>
+      <ul>
+        <li><i class="fas fa-arrow-right"></i><span>Deploy a network slice end to end and diagnose why one is rejected.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Distinguish <strong>signalled</strong> QoS from <strong>enforced</strong> QoS and reconcile them.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Read the service-based architecture itself for the faults that have no obvious layer.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-pagenav">
+      <a href="{{ '/training/course/02/' | relative_url }}">&larr; Course 02 — IMS Core &amp; VoNR</a>
+      <a href="{{ '/training/course/04/' | relative_url }}">Course 04 — Advanced IMS Scenarios &rarr;</a>
+    </div>
+
+  </div>
+</section>
