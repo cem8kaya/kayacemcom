@@ -1,0 +1,140 @@
+---
+layout: default
+title: Training — Lab Environment
+permalink: /training/lab/
+description: The single-VM 5G Core + IMS reference lab — network functions, interfaces and telemetry sources, described generically for teaching.
+---
+
+<div class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Inside the Lab</h1>
+    <p class="page-subtitle">Everything the training runs on lives in one cloud VM: a complete 5G Standalone core, a full IMS voice subsystem, a simulated RAN with two handsets, and the telemetry that feeds the ML.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.5rem;">
+  <div class="container">
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}" class="active">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <p style="max-width:72ch;color:var(--text-secondary);margin-bottom:1.5rem;">
+      The lab is the standard open-source 5G reference stack on a single low-cost cloud instance.
+      All planes run on the VM's loopback and a GTP tunnel interface, so one machine hosts the whole
+      end-to-end path.
+      <span class="t-mask">Project identifiers, the VM name, host IP addresses and authentication keys
+      are intentionally omitted here — this page teaches the architecture, not a specific deployment.</span>
+    </p>
+
+    <!-- VM shell -->
+    <div class="t-vm t-core">
+      <div class="t-vmbar">
+        <div class="t-lights"><i></i><i></i><i></i></div>
+        <div class="t-vmtitle">lab-vm &middot; Linux &middot; ~25 systemd units &middot; one instance, all planes co-located</div>
+      </div>
+      <div class="t-vmbody">
+
+        <!-- ACCESS -->
+        <div class="t-layer t-setup">
+          <div class="t-lhead"><span class="t-ltag">Access &middot; UERANSIM</span><span class="t-ldesc">Simulated gNB + two UEs, each isolated in its own Linux network namespace</span></div>
+          <div class="t-nodes">
+            <div class="t-node"><div class="t-nm">nr-gNB</div><div class="t-rl">simulated 5G base station; NGAP to the AMF</div><div class="t-pt">SCTP · N2</div></div>
+            <div class="t-node"><div class="t-nm">nr-UE 1</div><div class="t-rl">own network namespace; dual PDU sessions</div></div>
+            <div class="t-node"><div class="t-nm">nr-UE 2</div><div class="t-rl">own network namespace; dual PDU sessions</div></div>
+            <div class="t-node"><div class="t-nm">pjsua (AKA)</div><div class="t-rl">SIM-capable SIP client — the softphone</div></div>
+          </div>
+        </div>
+
+        <div class="t-iface"><span class="t-pill"><b>N2</b> NGAP/SCTP &nbsp;·&nbsp; <b>N3</b> GTP-U (user plane) &nbsp;·&nbsp; Uu radio (simulated)</span></div>
+
+        <!-- 5G CORE -->
+        <div class="t-layer t-core">
+          <div class="t-lhead"><span class="t-ltag">5G Core &middot; Open5GS</span><span class="t-ldesc">Standalone control &amp; user plane; service-based architecture over the SBI</span></div>
+          <div class="t-nodes">
+            <div class="t-node"><div class="t-nm">AMF</div><div class="t-rl">access &amp; mobility; registration, NAS</div></div>
+            <div class="t-node"><div class="t-nm">SMF</div><div class="t-rl">session mgmt; PDU sessions, QoS</div><div class="t-pt">N4 &rarr; UPF</div></div>
+            <div class="t-node"><div class="t-nm">UPF</div><div class="t-rl">user-plane forwarding</div><div class="t-pt">GTP-U</div></div>
+            <div class="t-node"><div class="t-nm">NRF</div><div class="t-rl">NF discovery / registry</div></div>
+            <div class="t-node"><div class="t-nm">PCF</div><div class="t-rl">policy; QoS, Rx to IMS</div></div>
+            <div class="t-node"><div class="t-nm">UDM · UDR · AUSF</div><div class="t-rl">subscriber data &amp; 5G-AKA auth</div></div>
+            <div class="t-node"><div class="t-nm">SCP</div><div class="t-rl">service communication proxy</div></div>
+            <div class="t-node"><div class="t-nm">MongoDB</div><div class="t-rl">subscriber database (5GC side)</div></div>
+          </div>
+        </div>
+
+        <div class="t-iface"><span class="t-pill">IMS rides an <b>ims</b> PDU session (<b>5QI 5</b> signalling / <b>5QI 1</b> voice) &nbsp;·&nbsp; <b>Rx</b> P-CSCF↔PCF</span></div>
+
+        <!-- IMS -->
+        <div class="t-layer t-ims">
+          <div class="t-lhead"><span class="t-ltag">IMS &middot; Kamailio + PyHSS</span><span class="t-ldesc">One Kamailio binary, three configs = the CSCF chain; PyHSS is HSS+AuC; a media relay carries the audio</span></div>
+          <div class="t-nodes">
+            <div class="t-node"><div class="t-nm">P-CSCF</div><div class="t-rl">UE's edge proxy; QoS anchor (Gm)</div><div class="t-pt">SIP :5060</div></div>
+            <div class="t-node"><div class="t-nm">I-CSCF</div><div class="t-rl">home entry; finds the S-CSCF</div><div class="t-pt">SIP</div></div>
+            <div class="t-node"><div class="t-nm">S-CSCF</div><div class="t-rl">registrar · authenticator · service brain</div><div class="t-pt">SIP</div></div>
+            <div class="t-node"><div class="t-nm">PyHSS</div><div class="t-rl">subscriber DB + AKA vector factory (HSS/AuC)</div><div class="t-pt">Diameter :3868 · REST</div></div>
+            <div class="t-node"><div class="t-nm">RTPEngine</div><div class="t-rl">media relay — the actual voice (Mb)</div><div class="t-pt">RTP</div></div>
+            <div class="t-node"><div class="t-nm">bind9</div><div class="t-rl">3GPP naming; NAPTR / SRV / A</div><div class="t-pt">DNS :53</div></div>
+          </div>
+        </div>
+
+        <div class="t-iface"><span class="t-pill"><b>Gm</b> UE↔P-CSCF &nbsp;·&nbsp; <b>Mw</b> CSCF↔CSCF &nbsp;·&nbsp; <b>Cx</b> CSCF↔HSS &nbsp;·&nbsp; <b>Mb</b> RTP media</span></div>
+
+        <!-- DATA / AI -->
+        <div class="t-layer t-data">
+          <div class="t-lhead"><span class="t-ltag">Telemetry &middot; Data &amp; AI</span><span class="t-ldesc">What Course 05 ingests — the network's own exhaust, plus optional analytics functions</span></div>
+          <div class="t-nodes">
+            <div class="t-node"><div class="t-nm">tshark pcaps</div><div class="t-rl">SIP · Diameter · RTP/RTCP captures</div></div>
+            <div class="t-node"><div class="t-nm">journald</div><div class="t-rl">per-NF structured logs</div></div>
+            <div class="t-node"><div class="t-nm">kamcmd · REST</div><div class="t-rl">Kamailio RPC stats · IMS reg state</div></div>
+            <div class="t-node"><div class="t-nm">KPI collector</div><div class="t-rl">the daemon Course 05 deploys → a time series</div></div>
+            <div class="t-node"><div class="t-nm">NWDAF</div><div class="t-rl">analytics; Isolation-Forest anomaly (optional)</div></div>
+            <div class="t-node"><div class="t-nm">Digital-Twin RCA</div><div class="t-rl">DTW + LLM root-cause agent (optional)</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- reference panels -->
+    <div class="t-cols2" style="margin-top:1.5rem;">
+      <div class="t-panel">
+        <h3>Reference points &amp; where the evidence lives</h3>
+        <p class="t-ph">Every interface maps to a protocol and a capture file — the spine of fault localization.</p>
+        <div style="overflow-x:auto;">
+        <table class="t-table">
+          <tr><th>Interface</th><th>Between</th><th>Protocol</th><th>Evidence</th></tr>
+          <tr><td class="t-if">N2</td><td>gNB ↔ AMF</td><td>NGAP / SCTP</td><td>control plane</td></tr>
+          <tr><td class="t-if">N3</td><td>gNB ↔ UPF</td><td>GTP-U</td><td>user plane</td></tr>
+          <tr><td class="t-if">Gm</td><td>UE ↔ P-CSCF</td><td>SIP</td><td class="t-mono">sip.pcap</td></tr>
+          <tr><td class="t-if">Mw</td><td>P ↔ I ↔ S-CSCF</td><td>SIP</td><td class="t-mono">sip.pcap</td></tr>
+          <tr><td class="t-if">Cx</td><td>I/S-CSCF ↔ HSS</td><td>Diameter</td><td class="t-mono">diameter.pcap</td></tr>
+          <tr><td class="t-if">Rx</td><td>P-CSCF ↔ PCF</td><td>Diameter</td><td>QoS (lab: off)</td></tr>
+          <tr><td class="t-if">Mb</td><td>UE ↔ media relay ↔ UE</td><td>RTP / RTCP</td><td class="t-mono">rtp.pcap</td></tr>
+          <tr><td class="t-if">ISC · Sh</td><td>S-CSCF ↔ AS ↔ HSS</td><td>SIP · Diameter</td><td>Course 04 (ref)</td></tr>
+        </table>
+        </div>
+      </div>
+
+      <div class="t-panel">
+        <h3>Identities &amp; addressing</h3>
+        <p class="t-ph">Kept generic — the lab uses reserved test values, not production identities.</p>
+        <ul class="skills-list" style="display:flex;flex-direction:column;gap:0.7rem;font-size:0.9rem;">
+          <li><strong>PLMN</strong> — a reserved <em>test</em> network code (never a live operator)</li>
+          <li><strong>IMS home domain</strong> — <span class="t-mono">ims.mnc&lt;xxx&gt;.mcc&lt;xxx&gt;.3gppnetwork.org</span> (derived from the test PLMN)</li>
+          <li><strong>Subscribers</strong> — two <span class="t-mask">test IMSIs</span> on the reserved PLMN</li>
+          <li><strong>Credentials</strong> — <span class="t-mask">shared Milenage test vectors</span> (K / OPc / AMF), the same for 5G-AKA and IMS-AKA</li>
+          <li><strong>Data network</strong> — <span class="t-mono">internet</span> DNN · 5QI 9</li>
+          <li><strong>Voice network</strong> — <span class="t-mono">ims</span> DNN · 5QI 5/1</li>
+          <li><strong>UE isolation</strong> — each UE a real host via its own network namespace + routes</li>
+        </ul>
+        <p style="margin-top:1rem;font-size:0.8rem;color:var(--text-muted);">
+          <i class="fas fa-shield-halved"></i>&nbsp; Host IPs, the cloud project, the VM name and key material are not published.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
