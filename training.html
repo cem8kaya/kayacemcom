@@ -1,0 +1,118 @@
+---
+layout: default
+title: Training
+permalink: /training/
+description: A hands-on 5G Core & IMS lab training program — six build-and-break courses from operating a 5G core to modelling it with machine learning.
+---
+
+<div class="page-hero">
+  <div class="container">
+    <h1 class="page-title">5G Core &amp; IMS Training</h1>
+    <p class="page-subtitle">Six build-and-break courses that take an engineer from running a 5G core, to operating IMS voice, to modelling the whole network with machine learning — all on one low-cost cloud lab.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.5rem;">
+  <div class="container">
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}" class="active">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <!-- program stats -->
+    <div class="hero-stats" style="margin-bottom:2.5rem;">
+      <div class="stat-item"><span class="stat-value">{{ site.data.training.program.courses }}</span><span class="stat-label">Courses</span></div>
+      <div class="stat-item"><span class="stat-value">{{ site.data.training.program.cells }}</span><span class="stat-label">Runnable cells</span></div>
+      <div class="stat-item"><span class="stat-value">{{ site.data.training.program.hours }}</span><span class="stat-label">Guided hours</span></div>
+      <div class="stat-item"><span class="stat-value">{{ site.data.training.program.tracks }}</span><span class="stat-label">Learning tracks</span></div>
+    </div>
+
+    <p class="lead" style="max-width:70ch;margin-bottom:2rem;">
+      The program is built on the open-source 5G stack — <strong>Open5GS</strong> (5G Standalone core),
+      <strong>UERANSIM</strong> (simulated RAN), and a <strong>Kamailio + PyHSS</strong> IMS subsystem —
+      running together on a single cloud VM. Every procedure is proven with real packet evidence:
+      the habit trained throughout is <em>never claim it works without the signalling to prove it</em>.
+    </p>
+
+    <div class="t-legend">
+      <span class="t-lg"><span class="t-dot" style="background:#64748b"></span>Setup</span>
+      <span class="t-lg"><span class="t-dot" style="background:#0d9488"></span>5G Core track</span>
+      <span class="t-lg"><span class="t-dot" style="background:#b45309"></span>IMS / Voice track</span>
+      <span class="t-lg"><span class="t-dot" style="background:#7c3aed"></span>Data &amp; ML track</span>
+    </div>
+
+    <!-- courses -->
+    <div class="t-rail">
+      {% for c in site.data.training.courses %}
+      <div class="t-course t-{{ c.track }} reveal">
+        <div><div class="t-num">{{ c.num }}</div></div>
+        <div class="t-card">
+          <div class="t-chead">
+            <h3 class="t-ctitle">{{ c.title }}</h3>
+            <span class="t-ttag">{{ c.tag }}</span>
+          </div>
+          <p class="t-focus">{{ c.focus }}</p>
+          <div class="t-meta">
+            <span class="t-chip"><strong>{{ c.cells }}</strong> cells</span>
+            {% for m in c.meta %}<span class="t-chip">{{ m }}</span>{% endfor %}
+          </div>
+          <div class="project-tags">
+            {% for t in c.topics %}<span class="tag tag-sm">{{ t }}</span>{% endfor %}
+          </div>
+          {% if c.prereq %}<p class="t-prereq">{{ c.prereq }}</p>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- thesis -->
+    <div class="t-thesis">
+      <h3 style="margin-bottom:0.5rem;">The one idea the whole path is built on</h3>
+      <p style="max-width:72ch;">
+        Every voice fault forks into <strong style="color:#0d9488;">the pipe (5G core)</strong> versus
+        <strong style="color:#b45309;">the application (IMS)</strong>. Course&nbsp;01 owns the pipe,
+        Course&nbsp;02 owns the application, the advanced pair deepens each, and Course&nbsp;05 teaches the
+        machine to read both. You leave able to answer that fork first — with evidence, not guesswork.
+      </p>
+      <div class="t-flow">
+        <span class="t-b">Build&nbsp;00</span><span class="t-arw">&rarr;</span>
+        <span class="t-b">Operate&nbsp;01</span><span class="t-arw">&rarr;</span>
+        <span class="t-b">Call&nbsp;02</span><span class="t-arw">&rarr;</span>
+        <span class="t-b">Engineer&nbsp;03&middot;04</span><span class="t-arw">&rarr;</span>
+        <span class="t-b">Model&nbsp;05</span>
+      </div>
+    </div>
+
+    <!-- what each ships + CTA -->
+    <div class="t-cols2" style="margin-top:1.5rem;">
+      <div class="t-panel">
+        <h3>What each course ships</h3>
+        <p class="t-ph">A self-contained package, not just a notebook.</p>
+        <ul class="skills-list" style="display:flex;flex-direction:column;gap:0.55rem;">
+          <li><i class="fas fa-book" style="color:var(--accent);width:1.2rem;"></i> <strong>Notebook</strong> — the instrument you run, cell by cell</li>
+          <li><i class="fas fa-file-lines" style="color:var(--accent);width:1.2rem;"></i> <strong>Guide</strong> — a narrative companion, module by module</li>
+          <li><i class="fas fa-circle-check" style="color:var(--accent);width:1.2rem;"></i> <strong>Assessments</strong> — quizzes, a practice test and a capstone</li>
+          <li><i class="fas fa-display" style="color:var(--accent);width:1.2rem;"></i> <strong>Slides</strong> — concept decks for the theory</li>
+          <li><i class="fas fa-toolbox" style="color:var(--accent);width:1.2rem;"></i> <strong>Resources</strong> — quick-reference cards and a glossary</li>
+        </ul>
+      </div>
+      <div class="t-panel" style="display:flex;flex-direction:column;">
+        <h3>Cell-safety discipline</h3>
+        <p class="t-ph">Every cell is labelled so you always know what it does.</p>
+        <ul class="skills-list" style="display:flex;flex-direction:column;gap:0.6rem;">
+          <li>🟢 <strong>read-only</strong> — inspects, never changes the lab</li>
+          <li>🟠 <strong>changes state</strong> — starts a service, provisions a UE</li>
+          <li>🔴 <strong>instructor-guarded</strong> — fault injection; never fires on <em>Run&nbsp;All</em></li>
+        </ul>
+        <div style="margin-top:auto;padding-top:1.25rem;">
+          <a href="https://github.com/cem8kaya/open5GS-ai-lab" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+            <i class="fab fa-github"></i>&nbsp; Explore the lab on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
