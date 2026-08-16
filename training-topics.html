@@ -1,0 +1,145 @@
+---
+layout: default
+title: Training — Topics & Cases
+permalink: /training/topics/
+description: A coverage map of every procedure, protocol, IMS service, fault case and ML technique across the six-course 5G Core & IMS lab program.
+---
+
+<div class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Topics &amp; Cases</h1>
+    <p class="page-subtitle">Every procedure, protocol, service and failure mode the six courses put in your hands — and which course teaches each.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.5rem;">
+  <div class="container">
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}" class="active">Topics &amp; Cases</a>
+    </div>
+
+    <!-- coverage stats -->
+    <div class="hero-stats" style="margin-bottom:2rem;">
+      <div class="stat-item"><span class="stat-value">6</span><span class="stat-label">Reference points</span></div>
+      <div class="stat-item"><span class="stat-value">10+</span><span class="stat-label">Diameter commands</span></div>
+      <div class="stat-item"><span class="stat-value">30+</span><span class="stat-label">Call-flow ladders</span></div>
+      <div class="stat-item"><span class="stat-value">8</span><span class="stat-label">Fault cases</span></div>
+      <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">ML model families</span></div>
+    </div>
+
+    <div class="t-legend">
+      <span class="t-lg"><span class="t-badge b-01">01</span> 5G Core</span>
+      <span class="t-lg"><span class="t-badge b-02">02</span> IMS</span>
+      <span class="t-lg"><span class="t-badge b-03">03</span> Adv. Core</span>
+      <span class="t-lg"><span class="t-badge b-04">04</span> Adv. IMS</span>
+      <span class="t-lg"><span class="t-badge b-05">05</span> Data &amp; ML</span>
+    </div>
+
+    <div class="t-doms">
+
+      <!-- Procedures -->
+      <div class="t-panel">
+        <h3>Procedures &amp; signalling</h3>
+        <p class="t-ph">Registration and call setup, decoded message by message.</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <div class="t-item"><span class="t-inm">5G registration &amp; PDU sessions<small>NAS, 5G-AKA, dual data networks</small></span><span class="t-badges"><span class="t-badge b-01">01</span></span></div>
+          <div class="t-item"><span class="t-inm">IMS-AKA registration<small>REGISTER → 401 → REGISTER → 200 OK</small></span><span class="t-badges"><span class="t-badge b-02">02</span></span></div>
+          <div class="t-item"><span class="t-inm">VoNR call between two UEs<small>INVITE / 100 / 180 / 200 / ACK / BYE + SDP</small></span><span class="t-badges"><span class="t-badge b-02">02</span></span></div>
+          <div class="t-item"><span class="t-inm">Cx command set<small>UAR · MAR · SAR · LIR — plus RTR / PPR</small></span><span class="t-badges"><span class="t-badge b-02">02</span><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">Registration deep dive<small>reg-event, de-registration, restoration</small></span><span class="t-badges"><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">Session modification<small>100rel/PRACK, UPDATE, preconditions, early media</small></span><span class="t-badges"><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">SIP &amp; Diameter forensics<small>tshark field extraction, auto-ladder from pcap</small></span><span class="t-badges"><span class="t-badge b-02">02</span><span class="t-badge b-03">03</span></span></div>
+        </div>
+      </div>
+
+      <!-- MMTEL -->
+      <div class="t-panel">
+        <h3>MMTEL &amp; the service layer</h3>
+        <p class="t-ph">The services that live above the base procedures.</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <div class="t-item"><span class="t-inm">iFC · Application Servers · ISC · Sh<small>DefaultHandling, session cases, third-party REGISTER</small></span><span class="t-badges"><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">Hold / resume &amp; call waiting<small>the SDP direction change, driven live</small></span><span class="t-badges"><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">Diversion — CFU / CFB / CFNR / CFNL<small>History-Info, loop prevention</small></span><span class="t-badges"><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">Barring &amp; identity<small>OCB/ICB/ACR · CLIP/CLIR, P-Asserted-Identity, Privacy</small></span><span class="t-badges"><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">Transfer &amp; conference<small>REFER, Replaces, isfocus, the MRF</small></span><span class="t-badges"><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">Emergency calls<small>service URN, E-CSCF/LRF, 380 Alternative Service</small></span><span class="t-badges"><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">Continuity &amp; interconnect<small>T-ADS · EPS fallback · SRVCC · ENUM · IBCF/TrGW</small></span><span class="t-badges"><span class="t-badge b-04">04</span></span></div>
+          <div class="t-item"><span class="t-inm">Media &amp; charging<small>codecs · DTMF · RTCP/MOS · Rf/Ro · ICID</small></span><span class="t-badges"><span class="t-badge b-02">02</span><span class="t-badge b-04">04</span></span></div>
+        </div>
+      </div>
+
+      <!-- Core engineering -->
+      <div class="t-panel">
+        <h3>Core engineering</h3>
+        <p class="t-ph">Deliberately reconfiguring a live core.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+          <div class="t-item"><span class="t-inm">Network slicing<small>S-NSSAI → DNN → subnet</small></span><span class="t-badges"><span class="t-badge b-03">03</span></span></div>
+          <div class="t-item"><span class="t-inm">QoS differentiation<small>tc TBF/PFIFO · AMBR · PCC</small></span><span class="t-badges"><span class="t-badge b-03">03</span></span></div>
+          <div class="t-item"><span class="t-inm">Security TS 33.501<small>NIA/NEA order · SUCI/ECIES</small></span><span class="t-badges"><span class="t-badge b-03">03</span></span></div>
+          <div class="t-item"><span class="t-inm">Signalling forensics<small>NF discovery · TRACE · audit</small></span><span class="t-badges"><span class="t-badge b-03">03</span></span></div>
+          <div class="t-item"><span class="t-inm">Mobility &amp; resilience<small>handover, orphan-state drift</small></span><span class="t-badges"><span class="t-badge b-03">03</span></span></div>
+          <div class="t-item"><span class="t-inm">KPI pipeline<small>metrics exporter · TS 28.554</small></span><span class="t-badges"><span class="t-badge b-03">03</span></span></div>
+        </div>
+      </div>
+
+      <!-- Data & ML -->
+      <div class="t-panel">
+        <h3>Data engineering &amp; ML</h3>
+        <p class="t-ph">The data-science lifecycle on real telemetry.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+          <div class="t-item"><span class="t-inm">Ingestion &amp; feature store<small>pcap · logs · metrics · DB</small></span><span class="t-badges"><span class="t-badge b-05">05</span></span></div>
+          <div class="t-item"><span class="t-inm">Sessionization<small>messages → calls by Call-ID</small></span><span class="t-badges"><span class="t-badge b-05">05</span></span></div>
+          <div class="t-item"><span class="t-inm">Data quality<small>missingness · clock skew · dedup</small></span><span class="t-badges"><span class="t-badge b-05">05</span></span></div>
+          <div class="t-item"><span class="t-inm">Analytics &amp; viz<small>p50/p95/p99 · dashboards · timelines</small></span><span class="t-badges"><span class="t-badge b-05">05</span></span></div>
+          <div class="t-item"><span class="t-inm">Anomaly detection<small>Isolation Forest — the NWDAF model</small></span><span class="t-badges"><span class="t-badge b-05">05</span></span></div>
+          <div class="t-item"><span class="t-inm">Fault classification<small>RandomForest + DTW — the RCA agent</small></span><span class="t-badges"><span class="t-badge b-05">05</span></span></div>
+          <div class="t-item"><span class="t-inm">Forecasting<small>seasonal-naive · backtest · skill</small></span><span class="t-badges"><span class="t-badge b-05">05</span></span></div>
+          <div class="t-item"><span class="t-inm">MLOps<small>eval campaigns · drift · serving</small></span><span class="t-badges"><span class="t-badge b-05">05</span></span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FAULT CASES -->
+    <div class="t-faults" style="margin-top:1.5rem;">
+      <h3 style="margin-bottom:0.25rem;">Fault cases you learn to localize</h3>
+      <p class="t-ph">Each is injected for real (Course 05, live edition) or walked as a clinic case (Courses 02–04). The skill is the same: read the symptom, name the interface, prove it.</p>
+      <div class="t-fgrid">
+        <div class="t-fcase"><div class="t-fn">HSS down</div><div class="t-fs">Registrations fail — and <strong>no 401 ever comes</strong> (no AKA vector).</div><div class="t-fw">tell: RSR → 0, no MAR/MAA on Cx · <span class="t-badge b-02">02</span> <span class="t-badge b-05">05</span></div></div>
+        <div class="t-fcase"><div class="t-fn">S-CSCF overload / down</div><div class="t-fs">REGISTER timeout, 480/504; setup latency spikes.</div><div class="t-fw">tell: PDD/RTT up, CSSR down, CPU pinned · <span class="t-badge b-02">02</span> <span class="t-badge b-05">05</span></div></div>
+        <div class="t-fcase"><div class="t-fn">Media relay down</div><div class="t-fs">Signalling perfect, <strong>the call is silent</strong>.</div><div class="t-fw">tell: all SIP KPIs green, zero RTP streams · <span class="t-badge b-02">02</span> <span class="t-badge b-05">05</span></div></div>
+        <div class="t-fcase"><div class="t-fn">DNS failure</div><div class="t-fs">Breaks at the <strong>next</strong> resolution, not instantly.</div><div class="t-fw">tell: NXDOMAIN on NAPTR/SRV; 404/480 · <span class="t-badge b-04">04</span> <span class="t-badge b-05">05</span></div></div>
+        <div class="t-fcase"><div class="t-fn">Registration storm</div><div class="t-fs">Attempts spike, success dips — a rogue-UE pattern.</div><div class="t-fw">tell: attempts ↑↑, RSR ↓, CPU ↑ · <span class="t-badge b-05">05</span></div></div>
+        <div class="t-fcase"><div class="t-fn">401 → 403 loop</div><div class="t-fs">Challenge worked, but <strong>RES ≠ XRES</strong>.</div><div class="t-fw">tell: key material / sequence number vs AuC · <span class="t-badge b-02">02</span></div></div>
+        <div class="t-fcase"><div class="t-fn">412 Precondition</div><div class="t-fs">INVITE rejected — QoS reservation unconfirmed.</div><div class="t-fw">tell: Rx/PCF binding absent · <span class="t-badge b-04">04</span></div></div>
+        <div class="t-fcase"><div class="t-fn">AS DefaultHandling</div><div class="t-fs">One Application Server restarts and <strong>every matching call fails</strong>.</div><div class="t-fw">tell: SESSION_TERMINATED trigger · <span class="t-badge b-04">04</span></div></div>
+      </div>
+
+      <p style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin:1.25rem 0 0.6rem;">SIP response codes decoded across the courses</p>
+      <div class="t-codes">
+        <span class="t-code"><b>380</b> <span>Alt Service (emergency)</span></span>
+        <span class="t-code"><b>401</b> <span>AKA challenge</span></span>
+        <span class="t-code"><b>403</b> <span>auth / RES≠XRES</span></span>
+        <span class="t-code"><b>404</b> <span>ENUM / routing</span></span>
+        <span class="t-code"><b>412</b> <span>precondition / Rx</span></span>
+        <span class="t-code"><b>420</b> <span>100rel mismatch</span></span>
+        <span class="t-code"><b>433</b> <span>ACR + Privacy:id</span></span>
+        <span class="t-code"><b>480</b> <span>diversion loop / T-ADS</span></span>
+        <span class="t-code"><b>486</b> <span>busy → CFB</span></span>
+        <span class="t-code"><b>488</b> <span>codec intersection</span></span>
+        <span class="t-code"><b>503</b> <span>overload</span></span>
+        <span class="t-code"><b>603</b> <span>barring</span></span>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:2.5rem;">
+      <a href="https://github.com/cem8kaya/open5GS-ai-lab" target="_blank" rel="noopener" class="btn btn-primary">
+        <i class="fab fa-github"></i>&nbsp; See the full course material on GitHub
+      </a>
+    </div>
+
+  </div>
+</section>

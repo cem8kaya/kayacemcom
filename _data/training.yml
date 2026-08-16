@@ -1,0 +1,92 @@
+# 5G Core & IMS hands-on training program — course catalogue.
+# NOTE: lab specifics (project IDs, VM names, host IP addresses, auth keys)
+# are deliberately omitted from this public data file. Only standard-protocol
+# and educational information is published.
+
+program:
+  courses: 6
+  cells: 615
+  hours: "~30"
+  tracks: 3
+
+courses:
+  - num: "00"
+    title: "Lab Setup"
+    track: "setup"
+    tag: "Prerequisite"
+    focus: >
+      Build the whole lab in your own cloud project — a VM, a 5G Standalone
+      core, NAT, the kernel GTP module (with the toolchain pitfall pre-solved),
+      a simulated RAN, a test subscriber, and a three-line smoke test.
+    cells: 39
+    meta: ["build-your-own", "low-cost cloud VM"]
+    topics: ["Cloud VM", "Open5GS install", "GTP / NAT", "UERANSIM", "First attach"]
+    prereq: ""
+
+  - num: "01"
+    title: "5G Core Operations in Practice"
+    track: "core"
+    tag: "5G Core"
+    focus: >
+      Operate, monitor and troubleshoot a live 5G Standalone core: network
+      functions, PDU sessions, registration, reading the dashboard, and
+      localizing faults by reference point.
+    cells: 97
+    meta: ["~4 h", "hands-on"]
+    topics: ["NF lifecycle", "PDU sessions", "5G-AKA", "N1/N2/N3/N4", "Fault localization"]
+    prereq: "Requires 00 · basic Linux + networking"
+
+  - num: "02"
+    title: "IMS Core & VoNR Procedures"
+    track: "ims"
+    tag: "IMS · Voice"
+    focus: >
+      Register and call over a live IMS core on top of 5G — a P/I/S-CSCF chain,
+      an HSS, and a media relay. IMS-AKA registration, a VoNR call between two
+      UEs, and every procedure proven with packet evidence.
+    cells: 112
+    meta: ["~4.5 h", "core lab"]
+    topics: ["IMS-AKA REGISTER", "VoNR call", "Cx: UAR/MAR/SAR/LIR", "SIP + Diameter decode", "RTP / MOS", "SMS over IMS"]
+    prereq: "Requires 01"
+
+  - num: "03"
+    title: "Advanced 5G Core Engineering"
+    track: "core"
+    tag: "5G Core"
+    focus: >
+      Change the network, not just watch it: network slicing end-to-end, QoS
+      differentiation with Linux traffic control, TS 33.501 security hardening,
+      signalling forensics via the NF discovery API, and an AI-RCA on-ramp.
+    cells: 70
+    meta: ["~5 h", "engineering"]
+    topics: ["Network slicing", "QoS / tc shaping", "TS 33.501 security", "SUCI / ECIES", "Signalling forensics", "KPI pipeline"]
+    prereq: "Requires 01 · 02 recommended"
+
+  - num: "04"
+    title: "Advanced IMS Scenarios & Service Engineering"
+    track: "ims"
+    tag: "IMS · Voice"
+    focus: >
+      The service layer above the base procedures: initial Filter Criteria and
+      Application Servers, MMTEL (hold, diversion, barring, identity), transfer
+      and conference, emergency calls, access continuity, interconnect, advanced
+      media and charging. Half is offline reference call-flows — runs with no lab.
+    cells: 119
+    meta: ["~6 h", "20 call-flows"]
+    topics: ["iFC / AS / ISC / Sh", "MMTEL services", "REFER / conference", "Emergency (sos)", "T-ADS / SRVCC", "ENUM / IBCF", "Rf/Ro charging"]
+    prereq: "Requires 02"
+
+  - num: "05"
+    title: "Data Engineering, Analytics & ML"
+    track: "data"
+    tag: "Data · ML"
+    focus: >
+      Turn the telemetry every earlier course produces into a data-science
+      lifecycle: ingestion, a feature store, analytics, visualization, and
+      machine learning — anomaly detection, fault classification, and
+      forecasting. Ships two notebooks: a synthetic edition that runs anywhere,
+      and a live-lab edition that runs on real telemetry.
+    cells: 178
+    meta: ["100 + 78 cells", "~7 h + 4 h"]
+    topics: ["Ingestion & feature store", "Sessionization", "TS 28.554 KPIs", "Isolation Forest", "DTW classification", "Forecasting", "MLOps"]
+    prereq: "Requires 01 · 02/03 for vocabulary"
