@@ -1,0 +1,95 @@
+---
+layout: default
+title: "Training — Course 04: Advanced IMS Scenarios &amp; Service Engineering"
+permalink: /training/course/04/
+description: "Course 04 — Advanced IMS Scenarios &amp; Service Engineering. Aims, module breakdown and text-based call-flow diagrams from the 5G Core & IMS lab program."
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="t-hero-badge"><span class="t-hero-num">04</span><span class="t-hero-tag">IMS · Voice Track</span></div>
+    <h1 class="page-title">Advanced IMS Scenarios &amp; Service Engineering</h1>
+    <p class="page-subtitle">The service layer above the base procedures — the services an operator actually runs.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.25rem;">
+  <div class="container">
+    <p class="t-crumb"><a href="{{ '/training/' | relative_url }}">Training</a> &nbsp;/&nbsp; Course 04</p>
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Aims — what you can do after</p>
+      <ul class="t-aims">
+        <li><i class="fas fa-check"></i><span>Read initial Filter Criteria and predict which Application Server a request hits — and what happens when it is down.</span></li>
+<li><i class="fas fa-check"></i><span>Trace the full Cx command set, including the two the base course skipped.</span></li>
+<li><i class="fas fa-check"></i><span>Distinguish re-INVITE from UPDATE, and explain the QoS-preconditions mechanism.</span></li>
+<li><i class="fas fa-check"></i><span>Execute the MMTEL services: hold/resume, call waiting, diversion, barring and identity.</span></li>
+<li><i class="fas fa-check"></i><span>Follow transfer (REFER) and conference call-flows.</span></li>
+<li><i class="fas fa-check"></i><span>Route an emergency call: emergency registration, the service URN, and PSAP selection.</span></li>
+<li><i class="fas fa-check"></i><span>Explain terminating access-domain selection, EPS fallback and single-radio continuity.</span></li>
+<li><i class="fas fa-check"></i><span>Resolve a called number the way a network does, and understand interconnect topology hiding.</span></li>
+<li><i class="fas fa-check"></i><span>Compute voice quality from captures, and correlate charging across nodes.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-section"><p class="t-sec-label">The idea that unlocks the course</p><pre class="t-ladder"><span class="h">                       Application Server (MMTEL, forwarding, ...)</span>
+                          ^                    |
+                          |  ISC (SIP)         |  Sh (to the HSS)
+                          |                    v
+  INVITE --&gt; S-CSCF --[ evaluate filter criteria in priority order ]--&gt; onward
+<span class="c">            #  matched a rule?  hand the request to that AS, then continue</span></pre><p class="t-figcap">The service layer: CSCFs route, Application Servers implement — filter criteria connect them.</p></div>
+<div class="t-section"><p class="t-sec-label">Flow — services on both sides of a call</p><pre class="t-ladder"><span class="h">  UE-A     S-CSCF(orig)     AS(orig)     S-CSCF(term)     AS(term)     UE-B</span>
+   |          |               |             |               |          |
+   |--INVITE--&gt;|--filter------&gt;|             |               |          |     originating services
+   |          |&lt;--(changed)---|             |               |          |
+   |          |------------- INVITE --------&gt;|--filter------&gt;|          |     terminating services
+   |          |               |             |&lt;--(changed)---|          |
+<span class="a">   |          |               |             |------------ INVITE ------&gt;|     delivered</span>
+<span class="c">   #  a service that 'works from my phone but not for customers' tested only one side</span></pre><p class="t-figcap">One call crosses the service layer twice — originating and terminating.</p></div>
+<div class="t-section"><p class="t-sec-label">Special path — emergency calls</p><pre class="t-ladder"><span class="h">  NORMAL:     UE -&gt; P-CSCF -&gt; S-CSCF -&gt; (filters -&gt; AS) -&gt; callee</span>
+<span class="h">  EMERGENCY:  UE -&gt; P-CSCF -&gt; E-CSCF -&gt; (location) -&gt; PSAP</span>
+<span class="c">  #  forwarding, barring and identity-restriction must NOT apply to an emergency call</span></pre><p class="t-figcap">An emergency call takes a different path — it skips the whole service layer on purpose.</p></div>
+<div class="t-section"><p class="t-sec-label">The MMTEL suite you exercise</p><div class="project-tags"><span class="tag tag-sm">Hold / resume</span><span class="tag tag-sm">Call waiting</span><span class="tag tag-sm">Diversion (CFU/CFB/CFNR)</span><span class="tag tag-sm">Barring</span><span class="tag tag-sm">Caller ID (CLIP/CLIR)</span><span class="tag tag-sm">Transfer (REFER)</span><span class="tag tag-sm">Conference</span><span class="tag tag-sm">Emergency (sos)</span><span class="tag tag-sm">T-ADS</span><span class="tag tag-sm">EPS fallback / SRVCC</span><span class="tag tag-sm">ENUM / interconnect</span><span class="tag tag-sm">Codecs / DTMF / MOS</span><span class="tag tag-sm">Charging (ICID)</span></div><p class="t-figcap">Roughly half the course is <strong>offline reference call-flows</strong> — 20 annotated ladders that render with no lab, so it covers elements a single-VM lab cannot host.</p></div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Module breakdown</p>
+      <div class="t-mods">
+        <div class="t-mod"><span class="t-mn">0</span><div><span class="t-mt">Bootstrap &amp; the call-flow renderer</span><span class="t-mtime">20 min</span><div class="t-md">The tooling that draws every ladder — pure text, no lab required.</div></div></div>
+<div class="t-mod"><span class="t-mn">1</span><div><span class="t-mt">The service layer: filter criteria &amp; Application Servers</span><span class="t-mtime">35 min</span><div class="t-md">How an IMS network gets services at all.</div></div></div>
+<div class="t-mod"><span class="t-mn">2</span><div><span class="t-mt">Registration deep dive</span><span class="t-mtime">35 min</span><div class="t-md">The reg-event package, network-initiated de-registration, restoration.</div></div></div>
+<div class="t-mod"><span class="t-mn">3</span><div><span class="t-mt">Session modification</span><span class="t-mtime">35 min</span><div class="t-md">Reliable provisional responses, UPDATE, QoS preconditions, early media.</div></div></div>
+<div class="t-mod"><span class="t-mn">4</span><div><span class="t-mt">MMTEL I — hold &amp; call waiting</span><span class="t-mtime">30 min</span><div class="t-md">Hold as an SDP direction change, driven live.</div></div></div>
+<div class="t-mod"><span class="t-mn">5</span><div><span class="t-mt">MMTEL II — diversion &amp; barring</span><span class="t-mtime">35 min</span><div class="t-md">The forwarding family, loop prevention, and barring codes.</div></div></div>
+<div class="t-mod"><span class="t-mn">6</span><div><span class="t-mt">MMTEL III — identity</span><span class="t-mtime">25 min</span><div class="t-md">Caller-ID presentation and restriction, asserted identity, privacy.</div></div></div>
+<div class="t-mod"><span class="t-mn">7</span><div><span class="t-mt">Transfer &amp; conference</span><span class="t-mtime">30 min</span><div class="t-md">REFER, dialog replacement, the conference focus.</div></div></div>
+<div class="t-mod"><span class="t-mn">8</span><div><span class="t-mt">Emergency calls</span><span class="t-mtime">30 min</span><div class="t-md">The service URN, the emergency CSCF, location and callback.</div></div></div>
+<div class="t-mod"><span class="t-mn">9</span><div><span class="t-mt">Continuity</span><span class="t-mtime">30 min</span><div class="t-md">Access-domain selection, EPS fallback, single-radio voice-call continuity.</div></div></div>
+<div class="t-mod"><span class="t-mn">10</span><div><span class="t-mt">Interconnect</span><span class="t-mtime">30 min</span><div class="t-md">Number-to-URI resolution, the border gateway, number portability.</div></div></div>
+<div class="t-mod"><span class="t-mn">11</span><div><span class="t-mt">Advanced media</span><span class="t-mtime">35 min</span><div class="t-md">Codec negotiation, DTMF, receiver reports, a quality score.</div></div></div>
+<div class="t-mod"><span class="t-mn">12</span><div><span class="t-mt">Charging</span><span class="t-mtime">25 min</span><div class="t-md">Offline vs online, and the identifier that ties a call together.</div></div></div>
+<div class="t-mod"><span class="t-mn">13</span><div><span class="t-mt">Resilience &amp; the clinic</span><span class="t-mtime">40 min</span><div class="t-md">Overload control and multi-layer fault localization.</div></div></div>
+      </div>
+    </div>
+
+    <div class="t-mastery">
+      <h3>What mastery of the service layer looks like</h3>
+      <ul>
+        <li><i class="fas fa-arrow-right"></i><span>Predict an outage from a single configuration field before a maintenance window.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Read a forwarded / transferred call from its history headers.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Route an emergency call on paper, and know which services must be switched off.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-pagenav">
+      <a href="{{ '/training/course/03/' | relative_url }}">&larr; Course 03 — Advanced Core Engineering</a>
+      <a href="{{ '/training/course/05/' | relative_url }}">Course 05 — Data Engineering &amp; ML &rarr;</a>
+    </div>
+
+  </div>
+</section>

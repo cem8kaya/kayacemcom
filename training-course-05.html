@@ -1,0 +1,82 @@
+---
+layout: default
+title: "Training — Course 05: Data Engineering, Analytics &amp; ML"
+permalink: /training/course/05/
+description: "Course 05 — Data Engineering, Analytics &amp; ML. Aims, module breakdown and text-based call-flow diagrams from the 5G Core & IMS lab program."
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="t-hero-badge"><span class="t-hero-num">05</span><span class="t-hero-tag">Data · ML Track</span></div>
+    <h1 class="page-title">Data Engineering, Analytics &amp; ML</h1>
+    <p class="page-subtitle">Turn the telemetry every earlier course produces into a data-science lifecycle — honestly.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.25rem;">
+  <div class="container">
+    <p class="t-crumb"><a href="{{ '/training/' | relative_url }}">Training</a> &nbsp;/&nbsp; Course 05</p>
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Aims — what you can do after</p>
+      <ul class="t-aims">
+        <li><i class="fas fa-check"></i><span>Map every data source a 5G/IMS network emits to its schema and its join keys.</span></li>
+<li><i class="fas fa-check"></i><span>Ingest heterogeneous telemetry into tidy tables and build a time-aligned feature store.</span></li>
+<li><i class="fas fa-check"></i><span>Assess data quality: missingness, clock skew, duplication, and the defects that silently poison a pipeline.</span></li>
+<li><i class="fas fa-check"></i><span>Analyse with the right statistics: distributions, percentiles, and standardized KPIs from raw events.</span></li>
+<li><i class="fas fa-check"></i><span>Work with time series: resampling, seasonality decomposition and change-point detection.</span></li>
+<li><i class="fas fa-check"></i><span>Visualise for two audiences — engineering diagnostics and operational status.</span></li>
+<li><i class="fas fa-check"></i><span>Engineer features and avoid the traps that make ML lie: leakage and improper time-series splitting.</span></li>
+<li><i class="fas fa-check"></i><span>Detect anomalies without labels, classify faults from shape, and forecast load — each judged honestly.</span></li>
+<li><i class="fas fa-check"></i><span>Operationalise: evaluation campaigns, drift detection, and serving analytics back to the network.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-section"><p class="t-sec-label">From packets to predictions</p><div class="t-diagram"><div class="t-vflow"><div class="t-step"><span class="t-sk">Ingest</span><span class="t-sv">Parse captures, logs, metrics and database state into tidy tables.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Feature store</span><span class="t-sv">Sessionize events into calls, time-align, and build one clean feature table.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Analytics</span><span class="t-sv">Percentiles, standardized KPIs, seasonality and change-points.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Machine learning</span><span class="t-sv">Anomaly detection, fault classification and forecasting.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Serve</span><span class="t-sv">Feed the results back to the analytics function — the loop closed.</span></div></div></div></div>
+<div class="t-section"><p class="t-sec-label">Three model families</p><div class="t-diagram"><div class="t-hflow"><span class="t-hb">Anomaly · Isolation Forest</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Classify · RandomForest + DTW</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Forecast · seasonal + backtest</span></div></div><p class="t-figcap">The same models the reference analytics function and the digital-twin agent run — an <strong>Isolation Forest</strong> for anomalies, <strong>time-series matching</strong> for root cause, and a seasonal baseline for forecasting.</p></div>
+<div class="t-section"><p class="t-sec-label">The honesty rule</p><pre class="t-ladder"><span class="h">  A model that scores 0.99 on your own data ...</span>
+<span class="w">     -&gt; is usually a leak, not a result</span>
+  Every ML module ends by asking:
+<span class="a">     -&gt; what would be true on REAL traffic, not synthetic?</span>
+<span class="c">  #  the skill is the pipeline and the scepticism, not the score</span></pre><p class="t-figcap">The habit the ML modules train: trust the honest lower number.</p></div>
+<div class="t-section"><p class="t-sec-label">Two editions</p><div class="t-diagram"><div class="t-vflow"><div class="t-step"><span class="t-sk">Synthetic</span><span class="t-sv">A generator grounded in the real schemas — runs anywhere, no lab, for learning the pipeline.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Live-lab</span><span class="t-sv">The same pipeline on real telemetry: it deploys a collector, drives traffic, and injects real faults to build a labelled dataset.</span></div></div></div></div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Module breakdown</p>
+      <div class="t-mods">
+        <div class="t-mod"><span class="t-mn">0</span><div><span class="t-mt">Foundation &amp; the data engine</span><span class="t-mtime">25 min</span><div class="t-md">The scientific stack and the synthetic-telemetry generator.</div></div></div>
+<div class="t-mod"><span class="t-mn">1</span><div><span class="t-mt">The data landscape</span><span class="t-mtime">30 min</span><div class="t-md">Sources, schemas, identifiers, and the cross-plane join problem.</div></div></div>
+<div class="t-mod"><span class="t-mn">2-3</span><div><span class="t-mt">Ingestion &amp; the feature store</span><span class="t-mtime">80 min</span><div class="t-md">Parsing, sessionization, time-alignment — the load-bearing steps.</div></div></div>
+<div class="t-mod"><span class="t-mn">4</span><div><span class="t-mt">Data quality</span><span class="t-mtime">30 min</span><div class="t-md">Missingness, clock skew, dedup, and a validation gate.</div></div></div>
+<div class="t-mod"><span class="t-mn">5-6</span><div><span class="t-mt">Analytics &amp; time series</span><span class="t-mtime">75 min</span><div class="t-md">Percentiles, standardized KPIs, seasonality and change-points.</div></div></div>
+<div class="t-mod"><span class="t-mn">7-8</span><div><span class="t-mt">Visualization</span><span class="t-mtime">65 min</span><div class="t-md">KPI dashboards, call-flow timelines, and audience-appropriate views.</div></div></div>
+<div class="t-mod"><span class="t-mn">9</span><div><span class="t-mt">Feature engineering &amp; leakage</span><span class="t-mtime">35 min</span><div class="t-md">Honest features and chronological splitting.</div></div></div>
+<div class="t-mod"><span class="t-mn">10</span><div><span class="t-mt">Anomaly detection</span><span class="t-mtime">40 min</span><div class="t-md">Baselines and an Isolation Forest — the analytics-function model.</div></div></div>
+<div class="t-mod"><span class="t-mn">11</span><div><span class="t-mt">Fault classification</span><span class="t-mtime">45 min</span><div class="t-md">Tree models and time-series matching — the root-cause method.</div></div></div>
+<div class="t-mod"><span class="t-mn">12</span><div><span class="t-mt">Forecasting</span><span class="t-mtime">35 min</span><div class="t-md">Seasonal baselines, backtesting, and honest skill.</div></div></div>
+<div class="t-mod"><span class="t-mn">13</span><div><span class="t-mt">MLOps &amp; closing the loop</span><span class="t-mtime">35 min</span><div class="t-md">Evaluation campaigns, drift, serving, and the human in the loop.</div></div></div>
+      </div>
+    </div>
+
+    <div class="t-mastery">
+      <h3>What modelling the network looks like</h3>
+      <ul>
+        <li><i class="fas fa-arrow-right"></i><span>Build a feature store and know why a shuffled split or a leaked feature is cheating.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Detect anomalies without labels, and classify a fault by its shape.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Quote a KPI as a percentile, never a bare average — the tail is the user experience.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-pagenav">
+      <a href="{{ '/training/course/04/' | relative_url }}">&larr; Course 04 — Advanced IMS Scenarios</a>
+      <span></span>
+    </div>
+
+  </div>
+</section>

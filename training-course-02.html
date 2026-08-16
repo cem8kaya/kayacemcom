@@ -1,0 +1,99 @@
+---
+layout: default
+title: "Training — Course 02: IMS Core &amp; VoNR Procedures"
+permalink: /training/course/02/
+description: "Course 02 — IMS Core &amp; VoNR Procedures. Aims, module breakdown and text-based call-flow diagrams from the 5G Core & IMS lab program."
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="t-hero-badge"><span class="t-hero-num">02</span><span class="t-hero-tag">IMS · Voice Track</span></div>
+    <h1 class="page-title">IMS Core &amp; VoNR Procedures</h1>
+    <p class="page-subtitle">Register and call over a live IMS core on top of 5G — and prove every step with packet evidence.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.25rem;">
+  <div class="container">
+    <p class="t-crumb"><a href="{{ '/training/' | relative_url }}">Training</a> &nbsp;/&nbsp; Course 02</p>
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Aims — what you can do after</p>
+      <ul class="t-aims">
+        <li><i class="fas fa-check"></i><span>Explain why 5G needs IMS for voice, and the role of every IMS element.</span></li>
+<li><i class="fas fa-check"></i><span>Map the IMS reference points (Gm, Mw, Cx, Rx, Mb) onto real processes and captures.</span></li>
+<li><i class="fas fa-check"></i><span>Provision a subscriber end-to-end: the 5G side and the IMS side.</span></li>
+<li><i class="fas fa-check"></i><span>Execute and read an IMS-AKA registration: REGISTER → 401 → REGISTER → 200 OK, with the Cx exchanges behind it.</span></li>
+<li><i class="fas fa-check"></i><span>Place a VoNR call and read the INVITE / SDP / ACK / BYE ladder.</span></li>
+<li><i class="fas fa-check"></i><span>Decode SIP and Diameter from captures, and read the logs like a call flow.</span></li>
+<li><i class="fas fa-check"></i><span>Verify the media plane and voice quality, and compute voice KPIs.</span></li>
+<li><i class="fas fa-check"></i><span>Diagnose the classic IMS failure modes with evidence.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-section"><p class="t-sec-label">The cast — one Kamailio, three roles</p><div class="t-diagram"><div class="t-hflow"><span class="t-hb">UE</span> <span class="t-ha">&rarr;</span> <span class="t-hb">P-CSCF</span> <span class="t-ha">&rarr;</span> <span class="t-hb">I-CSCF</span> <span class="t-ha">&rarr;</span> <span class="t-hb">S-CSCF</span> <span class="t-ha">&rarr;</span> <span class="t-hb">HSS</span></div></div><p class="t-figcap"><strong>P/I/S-CSCF</strong> route; the <strong>HSS</strong> holds the subscriber and mints the auth vectors; a <strong>media relay</strong> carries the audio. The UE knows one address — the P-CSCF; everything past it is discovered.</p></div>
+<div class="t-section"><p class="t-sec-label">Flow — IMS-AKA registration &#11088;</p><pre class="t-ladder"><span class="h">  UE          P-CSCF        I-CSCF        S-CSCF          HSS</span>
+   |            |             |             |              |
+   |--REGISTER-&gt;|--REGISTER--&gt;|             |              |     no credentials yet
+   |            |             |----Cx: UAR-------------&gt;    |     may this user register?
+   |            |             |&lt;---Cx: UAA--------------    |     assign an S-CSCF
+   |            |             |--REGISTER--&gt;|              |
+   |            |             |             |---Cx: MAR---&gt;|     give me an AKA vector
+   |            |             |             |&lt;--Cx: MAA----|     RAND AUTN XRES CK IK
+<span class="w">   |&lt;------------- 401 Unauthorized --------|              |     challenge: RAND + AUTN</span>
+<span class="c">   #  the client verifies the network, then answers the challenge</span>
+   |--REGISTER (response)----&gt;|--REGISTER--&gt;|              |
+   |            |             |             |---Cx: SAR---&gt;|     I serve this user
+   |            |             |             |&lt;--Cx: SAA----|     profile + service triggers
+<span class="a">   |&lt;-------------- 200 OK -----------------|              |     registered.</span></pre><p class="t-figcap">The centerpiece: IMS-AKA registration. 401 is step two of the protocol, not an error.</p></div>
+<div class="t-section"><p class="t-sec-label">Flow — a VoNR call</p><pre class="t-ladder"><span class="h">  UE-A                     IMS core                     UE-B</span>
+   |                          |                          |
+   |--INVITE (SDP offer)-----&gt;|--------INVITE-----------&gt;|
+   |&lt;--100 Trying-------------|                          |
+<span class="w">   |&lt;--180 Ringing-----------------------------------  -|     the phone rings</span>
+<span class="a">   |&lt;--200 OK (SDP answer)------------------------------|     answered</span>
+   |--ACK---------------------&gt;|--------ACK-------------&gt;|
+<span class="a">   |====== RTP media (via the relay) ==================|     the actual audio</span>
+   |--BYE---------------------&gt;|--------BYE-------------&gt;|
+<span class="c">   #  signalling can be perfect while media is silent — that fork opens every voice ticket</span></pre><p class="t-figcap">A voice call: signalling and media are separate planes.</p></div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Module breakdown</p>
+      <div class="t-mods">
+        <div class="t-mod"><span class="t-mn">0</span><div><span class="t-mt">Lab bootstrap &amp; helpers</span><span class="t-mtime">15 min</span><div class="t-md">The IMS lab constants and the validate-gate discipline.</div></div></div>
+<div class="t-mod"><span class="t-mn">1</span><div><span class="t-mt">IMS architecture, services &amp; startup</span><span class="t-mtime">30 min</span><div class="t-md">The CSCF chain awake and patched; the dedicated voice data network.</div></div></div>
+<div class="t-mod"><span class="t-mn">2</span><div><span class="t-mt">Subscriber provisioning</span><span class="t-mtime">25 min</span><div class="t-md">One user, two databases — the 5G side and the IMS side.</div></div></div>
+<div class="t-mod"><span class="t-mn">3</span><div><span class="t-mt">Access path</span><span class="t-mtime">30 min</span><div class="t-md">A gNB and two UEs, each isolated in its own namespace.</div></div></div>
+<div class="t-mod"><span class="t-mn">4</span><div><span class="t-mt">The SIM-capable SIP client</span><span class="t-mtime">15 min</span><div class="t-md">Why a stock softphone cannot register — and the AKA client that can.</div></div></div>
+<div class="t-mod"><span class="t-mn">5</span><div><span class="t-mt">IMS registration with AKA + evidence</span><span class="t-mtime">40 min</span><div class="t-md">The centerpiece: the 401→200 handshake and its seven witnesses.</div></div></div>
+<div class="t-mod"><span class="t-mn">6</span><div><span class="t-mt">VoNR call + evidence</span><span class="t-mtime">30 min</span><div class="t-md">A call between two UEs, and the signalling/media split.</div></div></div>
+<div class="t-mod"><span class="t-mn">7</span><div><span class="t-mt">Protocol deep dive</span><span class="t-mtime">30 min</span><div class="t-md">Decode SIP and Diameter from captures, message by message.</div></div></div>
+<div class="t-mod"><span class="t-mn">8</span><div><span class="t-mt">Media plane &amp; voice QoS</span><span class="t-mtime">20 min</span><div class="t-md">RTP, the quality chain, and the dedicated voice bearer.</div></div></div>
+<div class="t-mod"><span class="t-mn">9</span><div><span class="t-mt">SMS over IMS &amp; XCAP</span><span class="t-mtime">10 min</span><div class="t-md">Messaging and subscriber-editable service settings.</div></div></div>
+<div class="t-mod"><span class="t-mn">10</span><div><span class="t-mt">Voice KPIs &amp; ML datasets</span><span class="t-mtime">20 min</span><div class="t-md">Registration and call-setup success rates; labelled feature export.</div></div></div>
+<div class="t-mod"><span class="t-mn">11</span><div><span class="t-mt">Troubleshooting clinic</span><span class="t-mtime">35 min</span><div class="t-md">Guided fault injection across four interfaces, with repair.</div></div></div>
+      </div>
+    </div>
+
+    <div class="t-mastery">
+      <h3>What mastery of the voice layer looks like</h3>
+      <ul>
+        <li><i class="fas fa-arrow-right"></i><span>Read a registration and know that <strong>401 is the protocol working</strong>, not failing.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Follow one call across seven witnesses, correlated by Call-ID.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Split every voice fault into signalling vs media before touching anything.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-pagenav">
+      <a href="{{ '/training/course/01/' | relative_url }}">&larr; Course 01 — 5G Core Operations</a>
+      <a href="{{ '/training/course/03/' | relative_url }}">Course 03 — Advanced Core Engineering &rarr;</a>
+    </div>
+
+  </div>
+</section>
