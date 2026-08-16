@@ -1,0 +1,61 @@
+---
+layout: default
+title: "Training — Course 00: Lab Setup"
+permalink: /training/course/00/
+description: "Course 00 — Lab Setup. Aims, module breakdown and text-based call-flow diagrams from the 5G Core & IMS lab program."
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="t-hero-badge"><span class="t-hero-num">00</span><span class="t-hero-tag">Prerequisite</span></div>
+    <h1 class="page-title">Lab Setup</h1>
+    <p class="page-subtitle">Build the whole lab in your own cloud project — the foundation every other course runs on.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.25rem;">
+  <div class="container">
+    <p class="t-crumb"><a href="{{ '/training/' | relative_url }}">Training</a> &nbsp;/&nbsp; Course 00</p>
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Aims — what you can do after</p>
+      <ul class="t-aims">
+        <li><i class="fas fa-check"></i><span>Stand up a complete, private 5G Standalone lab on a single cloud VM.</span></li>
+<li><i class="fas fa-check"></i><span>Understand every component the later courses depend on — and how to reset it.</span></li>
+<li><i class="fas fa-check"></i><span>Run a smoke test that proves the core, the RAN and the data path all work end to end.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-section"><p class="t-sec-label">The build, end to end</p><div class="t-diagram"><div class="t-vflow"><div class="t-step"><span class="t-sk">1 · Provision</span><span class="t-sv">A single low-cost <strong>cloud VM</strong> in your own project.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">2 · Core</span><span class="t-sv">Install the <strong>5G Standalone core</strong> (Open5GS) + the subscriber database.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">3 · Network</span><span class="t-sv">Configure <strong>NAT</strong> and the kernel <strong>GTP module</strong> — with the toolchain pitfall pre-solved.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">4 · RAN</span><span class="t-sv">Bring up the <strong>simulated radio</strong> (UERANSIM): a gNB and a UE.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">5 · Subscribe</span><span class="t-sv">Provision <strong>one test subscriber</strong> in the database.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">6 · Verify</span><span class="t-sv">A <strong>three-line smoke test</strong>: register, open a data session, ping out.</span></div></div></div><p class="t-figcap">Each step has a matching teardown cell — the lab spins up and down on demand, so it stays a low-cost, disposable environment.</p></div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Module breakdown</p>
+      <div class="t-mods">
+        <div class="t-mod"><span class="t-mn">0</span><div><span class="t-mt">Lab bootstrap &amp; helpers</span><span class="t-mtime"></span><div class="t-md">Provision the VM, install the toolchain, load the shared helpers every cell uses.</div></div></div>
+<div class="t-mod"><span class="t-mn">1</span><div><span class="t-mt">Core, RAN &amp; subscriber</span><span class="t-mtime"></span><div class="t-md">Open5GS + database, the simulated RAN, and a first test subscriber.</div></div></div>
+<div class="t-mod"><span class="t-mn">2</span><div><span class="t-mt">Smoke test &amp; teardown</span><span class="t-mtime"></span><div class="t-md">Prove the end-to-end path, then the stop / delete discipline that keeps it cheap.</div></div></div>
+      </div>
+    </div>
+
+    <div class="t-mastery">
+      <h3>What the setup gives you</h3>
+      <ul>
+        <li><i class="fas fa-arrow-right"></i><span>A private, disposable 5G lab you fully control — no shared infrastructure.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>A cost table plus stop / delete cells, so it only runs when you are using it.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>A troubleshooting matrix for the handful of things that commonly go wrong on first build.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-pagenav">
+      <span></span>
+      <a href="{{ '/training/course/01/' | relative_url }}">Course 01 — 5G Core Operations &rarr;</a>
+    </div>
+
+  </div>
+</section>

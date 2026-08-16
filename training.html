@@ -61,7 +61,10 @@ description: A hands-on 5G Core & IMS lab training program — six build-and-bre
           <div class="project-tags">
             {% for t in c.topics %}<span class="tag tag-sm">{{ t }}</span>{% endfor %}
           </div>
-          {% if c.prereq %}<p class="t-prereq">{{ c.prereq }}</p>{% endif %}
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:0.4rem;">
+            {% if c.prereq %}<p class="t-prereq" style="margin:0;">{{ c.prereq }}</p>{% else %}<span></span>{% endif %}
+            <a href="{{ '/training/course/' | append: c.num | append: '/' | relative_url }}" class="nav-link" style="font-size:0.85rem;font-weight:600;color:var(--accent);white-space:nowrap;">View course &rarr;</a>
+          </div>
         </div>
       </div>
       {% endfor %}
