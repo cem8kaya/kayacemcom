@@ -1745,6 +1745,9 @@ textarea.form-control {
 }
 .t-outcome i { color: var(--tk); margin-top: 0.15rem; flex-shrink: 0; }
 .t-outcome strong { color: var(--text-primary); }
+.t-leadwrap { margin: 0.25rem 0 0.75rem; }
+.t-lead-in { color: var(--text-secondary); font-size: 1.02rem; line-height: 1.72; max-width: 74ch; margin: 0 0 1.1rem; }
+.t-outcome-page { font-size: 0.98rem; padding: 0.8rem 1rem; max-width: 74ch; }
 .t-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.85rem; }
 .t-chip {
   font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary);
