@@ -4,10 +4,10 @@
 # and educational information is published.
 
 program:
-  courses: 6
-  cells: 615
-  hours: "~30"
-  tracks: 3
+  courses: 8
+  cells: 736
+  hours: "~40"
+  tracks: 4
 
 courses:
   - num: "00"
@@ -15,10 +15,15 @@ courses:
     track: "setup"
     tag: "Prerequisite"
     focus: >
-      Build the whole lab in your own cloud project — a VM, a 5G Standalone
-      core, NAT, the kernel GTP module (with the toolchain pitfall pre-solved),
-      a simulated RAN, a test subscriber, and a three-line smoke test.
-    cells: 39
+      Build the whole lab from an empty cloud project — a single VM, a 5G
+      Standalone core, NAT and IP forwarding, the kernel GTP module (with the
+      toolchain pitfall pre-solved so you don't lose an afternoon to it), a
+      simulated RAN and test subscriber, and a three-line smoke test that
+      proves a phone can attach. No prior 5G experience assumed.
+    outcome: >
+      You walk away with a working, reproducible 5G lab you own end to end —
+      and the confidence to tear it down and rebuild it from scratch.
+    cells: 41
     meta: ["build-your-own", "low-cost cloud VM"]
     topics: ["Cloud VM", "Open5GS install", "GTP / NAT", "UERANSIM", "First attach"]
     prereq: ""
@@ -28,10 +33,15 @@ courses:
     track: "core"
     tag: "5G Core"
     focus: >
-      Operate, monitor and troubleshoot a live 5G Standalone core: network
-      functions, PDU sessions, registration, reading the dashboard, and
-      localizing faults by reference point.
-    cells: 97
+      Live at the console of a running 5G Standalone core. Watch the network
+      functions negotiate over the service-based bus, trace a UE from
+      registration through 5G-AKA authentication to an established PDU session,
+      read the operational dashboard, and — the load-bearing skill — localize a
+      fault to the exact reference point (N1/N2/N3/N4) instead of guessing.
+    outcome: >
+      You can look at a broken 5G core and say which function and which
+      interface is at fault, with the signalling to back the claim.
+    cells: 99
     meta: ["~4 h", "hands-on"]
     topics: ["NF lifecycle", "PDU sessions", "5G-AKA", "N1/N2/N3/N4", "Fault localization"]
     prereq: "Requires 00 · basic Linux + networking"
@@ -41,10 +51,16 @@ courses:
     track: "ims"
     tag: "IMS · Voice"
     focus: >
-      Register and call over a live IMS core on top of 5G — a P/I/S-CSCF chain,
-      an HSS, and a media relay. IMS-AKA registration, a VoNR call between two
-      UEs, and every procedure proven with packet evidence.
-    cells: 112
+      Stand up voice on top of the 5G core: a full P/I/S-CSCF call-session
+      chain, an HSS, and a media relay. Drive an IMS-AKA REGISTER, place a
+      VoNR call between two UEs, and decode the SIP and Diameter (Cx:
+      UAR/MAR/SAR/LIR) side by side so the SIP dialog and the subscriber
+      lookups line up. Every step proven with real packet evidence — never
+      "it rang, so it works".
+    outcome: >
+      You can bring up IMS voice from nothing and read a VoNR call end to end,
+      separating a signalling problem from a media problem on sight.
+    cells: 111
     meta: ["~4.5 h", "core lab"]
     topics: ["IMS-AKA REGISTER", "VoNR call", "Cx: UAR/MAR/SAR/LIR", "SIP + Diameter decode", "RTP / MOS", "SMS over IMS"]
     prereq: "Requires 01"
@@ -54,10 +70,16 @@ courses:
     track: "core"
     tag: "5G Core"
     focus: >
-      Change the network, not just watch it: network slicing end-to-end, QoS
-      differentiation with Linux traffic control, TS 33.501 security hardening,
-      signalling forensics via the NF discovery API, and an AI-RCA on-ramp.
-    cells: 70
+      Stop watching the network and start changing it. Cut an end-to-end
+      network slice, differentiate QoS with Linux traffic control and prove the
+      shaping in the data plane, harden the core against the TS 33.501 threat
+      model (SUCI/ECIES subscriber-identity protection included), reconstruct
+      signalling from the NF discovery API, and stand up a KPI pipeline that
+      feeds an AI root-cause on-ramp.
+    outcome: >
+      You can engineer a differentiated, hardened core to a requirement — and
+      show the packets and KPIs that prove the change did what you claimed.
+    cells: 71
     meta: ["~5 h", "engineering"]
     topics: ["Network slicing", "QoS / tc shaping", "TS 33.501 security", "SUCI / ECIES", "Signalling forensics", "KPI pipeline"]
     prereq: "Requires 01 · 02 recommended"
@@ -67,10 +89,15 @@ courses:
     track: "ims"
     tag: "IMS · Voice"
     focus: >
-      The service layer above the base procedures: initial Filter Criteria and
-      Application Servers, MMTEL (hold, diversion, barring, identity), transfer
-      and conference, emergency calls, access continuity, interconnect, advanced
-      media and charging. Half is offline reference call-flows — runs with no lab.
+      The service layer that turns a raw call into a product: initial Filter
+      Criteria routing to Application Servers over ISC, the MMTEL suite (hold,
+      call diversion, barring, identity presentation/restriction), transfer and
+      conference (REFER), emergency (sos) calls, access continuity (T-ADS,
+      SRVCC), interconnect (ENUM, IBCF/TrGW) and Rf/Ro charging. Roughly half
+      is offline reference call-flows that run with no lab attached.
+    outcome: >
+      You can reason about why a supplementary service misbehaves — from the
+      iFC that should have triggered to the AS that answered — not just whether.
     cells: 119
     meta: ["~6 h", "20 call-flows"]
     topics: ["iFC / AS / ISC / Sh", "MMTEL services", "REFER / conference", "Emergency (sos)", "T-ADS / SRVCC", "ENUM / IBCF", "Rf/Ro charging"]
@@ -81,12 +108,59 @@ courses:
     track: "data"
     tag: "Data · ML"
     focus: >
-      Turn the telemetry every earlier course produces into a data-science
-      lifecycle: ingestion, a feature store, analytics, visualization, and
-      machine learning — anomaly detection, fault classification, and
-      forecasting. Ships two notebooks: a synthetic edition that runs anywhere,
-      and a live-lab edition that runs on real telemetry.
-    cells: 178
-    meta: ["100 + 78 cells", "~7 h + 4 h"]
+      Turn the telemetry every earlier course emits into a full data-science
+      lifecycle — ingestion, a time-aligned feature store, analytics on
+      standardized TS 28.554 KPIs, visualization for two audiences, and
+      machine learning (Isolation-Forest anomaly detection, DTW fault
+      classification, seasonal forecasting). The recurring lesson is honesty:
+      a 0.99 score is usually a leak, and every model ends by asking what would
+      be true on real traffic. Ships two notebooks — a synthetic edition that
+      runs anywhere, and a live-lab edition on real telemetry.
+    outcome: >
+      You can build an honest pipeline from packets to predictions — and you
+      trust the lower, leak-free number over the flattering one.
+    cells: 179
+    meta: ["101 + 78 cells", "~7 h + 4 h"]
     topics: ["Ingestion & feature store", "Sessionization", "TS 28.554 KPIs", "Isolation Forest", "DTW classification", "Forecasting", "MLOps"]
     prereq: "Requires 01 · 02/03 for vocabulary"
+
+  - num: "06"
+    title: "Deep, Graph & Federated ML"
+    track: "data"
+    tag: "Data · ML"
+    focus: >
+      The honest case for deep learning in a telco: when a deep, graph or
+      federated method genuinely beats the classical baseline from Course 05 —
+      and, just as often, when it does not. CNNs/ROCKET for KPI time series,
+      sequence models and self-attention for signalling ladders, graph neural
+      nets that localize a fault on the service-based topology itself, deep
+      anomaly detection, federated learning across sites that never share raw
+      data, and a trust layer — conformal prediction, drift detection and a
+      human in the loop. Offline, no GPU required.
+    outcome: >
+      You can pick the right model for a telco problem on evidence, and wrap it
+      in the calibration and drift checks that make it safe to trust.
+    cells: 52
+    meta: ["~5 h", "offline · no GPU"]
+    topics: ["CNN / ROCKET", "Sequence models · attention", "Graph neural nets", "Deep anomaly detection", "Federated learning (FedAvg)", "Conformal prediction", "Drift & trust"]
+    prereq: "Requires 05"
+
+  - num: "07"
+    title: "IMS Roaming & Signalling Security"
+    track: "security"
+    tag: "Security · Roaming"
+    focus: >
+      Cross the operator boundary and learn to defend it. The roaming
+      architecture (home vs visited network, the IPX, the DEA and the SEPP),
+      legacy SS7/MAP and CAMEL flows and why they are dangerous, Diameter
+      roaming over S6a, VoLTE/VoNR roaming (S8HR vs local breakout), 5G roaming
+      secured by the SEPP over N32/PRINS, signalling firewalls built to GSMA
+      guidance (FS.11/FS.19), roaming-fraud detection (IRSF, Wangiri, SIM-box),
+      and the on-call side — incident response and operations. Offline-first.
+    outcome: >
+      You can read an inter-operator signalling flow for both correctness and
+      attack, and reason about the firewall rule that should have stopped it.
+    cells: 64
+    meta: ["~6 h", "offline-first"]
+    topics: ["Roaming architecture", "SS7 / MAP / CAMEL", "Diameter S6a", "VoLTE/VoNR roaming", "SEPP · N32 · PRINS", "Signalling firewalls", "Fraud detection", "Incident & on-call"]
+    prereq: "Requires 02 (+ 01)"
