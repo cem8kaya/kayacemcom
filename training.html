@@ -55,6 +55,7 @@ description: A hands-on 5G Core & IMS lab training program — eight build-and-b
             <span class="t-ttag">{{ c.tag }}</span>
           </div>
           <p class="t-focus">{{ c.focus }}</p>
+          {% if c.outcome %}<p class="t-outcome"><i class="fas fa-flag-checkered"></i><span><strong>You leave able to:</strong> {{ c.outcome }}</span></p>{% endif %}
           <div class="t-meta">
             <span class="t-chip"><strong>{{ c.cells }}</strong> cells</span>
             {% for m in c.meta %}<span class="t-chip">{{ m }}</span>{% endfor %}
