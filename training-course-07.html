@@ -1,0 +1,95 @@
+---
+layout: default
+title: "Training — Course 07: IMS Roaming &amp; Signalling Security"
+permalink: /training/course/07/
+description: "Course 07 — IMS Roaming &amp; Signalling Security. Aims, module breakdown and text-based diagrams from the 5G Core & IMS lab program."
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="t-hero-badge"><span class="t-hero-num">07</span><span class="t-hero-tag">Security · Roaming Track</span></div>
+    <h1 class="page-title">IMS Roaming &amp; Signalling Security</h1>
+    <p class="page-subtitle">International roaming and how to defend it — from SS7 to the 5G SEPP, plus fraud detection and incident response.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.25rem;">
+  <div class="container">
+    <p class="t-crumb"><a href="{{ '/training/' | relative_url }}">Training</a> &nbsp;/&nbsp; Course 07</p>
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Aims — what you can do after</p>
+      <ul class="t-aims">
+        <li><i class="fas fa-check"></i><span>Draw the roaming architecture — home/visited networks, the IPX, the DEA and the SEPP — and say what each node does.</span></li>
+<li><i class="fas fa-check"></i><span>Read SS7/MAP and CAMEL roaming flows as call-flow ladders.</span></li>
+<li><i class="fas fa-check"></i><span>Read Diameter roaming flows (S6a) and explain Diameter routing, realms and the border gateway.</span></li>
+<li><i class="fas fa-check"></i><span>Explain VoLTE &amp; VoNR roaming — home-routed (S8HR) vs local breakout (LBO), and where the media goes.</span></li>
+<li><i class="fas fa-check"></i><span>Explain 5G roaming security — the SEPP, N32, PRINS vs TLS, and roaming over the service-based interface.</span></li>
+<li><i class="fas fa-check"></i><span>Operate a signalling firewall — classify inbound SS7/Diameter/GTP by attack category and block the dangerous ones.</span></li>
+<li><i class="fas fa-check"></i><span>Detect roaming fraud — IRSF, Wangiri, SIMbox, SMS and location fraud — with rules and ML.</span></li>
+<li><i class="fas fa-check"></i><span>Run a roaming incident — monitor the right KPIs, localize a cross-operator fault, and follow an on-call runbook.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-section"><p class="t-sec-label">Two operators, one subscriber</p><pre class="t-ladder"><span class="h">  Subscriber      Visited network (VPMN)     IPX      Home network (HPMN)</span>
+      |                    |                  |               |
+      |---attach----------&gt;|                  |               |     the UE is abroad
+      |                    |---signalling----&gt;|--DEA/SEPP----&gt;|     border nodes screen it
+<span class="a">      |                    |&lt;----profile------|&lt;--------------|     the home network authorizes</span>
+<span class="c">      #  DEA guards the Diameter border (4G); SEPP guards the SBI border (5G)</span></pre><p class="t-figcap">A roaming call spans two operators — know which network owns each leg.</p></div>
+<div class="t-section"><p class="t-sec-label">Flow — the 4G roaming attach (S6a)</p><pre class="t-ladder"><span class="h">  MME (visited)        DEA (border)        HSS (home)</span>
+     |                    |                   |
+     |--Auth-Info-Req----&gt;|-------------------|--&gt;                 give me a vector
+<span class="w">     |&lt;--Auth-Info-Ans----|&lt;------------------|                    RAND/AUTN/XRES/K...</span>
+     |--Update-Location--&gt;|-------------------|--&gt;                 I am serving this user
+<span class="a">     |&lt;--Update-Loc-Ans---|&lt;------------------|                    subscription data</span>
+<span class="c">     #  every message is realm-routed across operators — the DEA is the choke point</span></pre><p class="t-figcap">The 4G roaming attach: the visited network asks the home network to authorize the subscriber.</p></div>
+<div class="t-section"><p class="t-sec-label">Three generations, three borders</p><pre class="t-ladder"><span class="h">  2G / 3G   SS7 / SIGTRAN     MAP + CAMEL           border:  SS7 firewall</span>
+<span class="h">  4G / EPC  Diameter          S6a / S8 / S9         border:  DEA + Diameter firewall</span>
+<span class="h">  5G / SA   HTTP/2 (SBI)      N32 via the SEPP      border:  SEPP (PRINS / TLS)</span></pre><p class="t-figcap">One subscriber, three generations of roaming signalling — and where the border control lives.</p></div>
+<div class="t-section"><p class="t-sec-label">Defence — the signalling firewall</p><pre class="t-ladder"><span class="h">  inbound SS7 / Diameter / GTP message</span>
+     |
+<span class="a">     +-- expected for this subscriber &amp; location  ------&gt; allow</span>
+<span class="w">     +-- category 1: should never cross a border  ------&gt; block</span>
+<span class="w">     +-- category 2: only from the home network   ------&gt; verify origin</span>
+<span class="r">     +-- category 3: plausible but abusable       ------&gt; rate-limit + alert</span>
+<span class="c">     #  categories follow GSMA signalling-security guidance</span></pre><p class="t-figcap">The signalling firewall: classify every inbound cross-border message, then block the dangerous ones.</p></div>
+<div class="t-section"><p class="t-sec-label">Voice roaming &amp; the fraud you learn to catch</p><div class="t-diagram"><div class="t-hflow"><span class="t-hb">S8HR</span> <span class="t-ha">home-routed</span> <span class="t-hb">vs</span> <span class="t-ha">local breakout</span> <span class="t-hb">LBO</span></div></div><div class="project-tags" style="margin-top:0.75rem;"><span class="tag tag-sm">IRSF</span><span class="tag tag-sm">Wangiri</span><span class="tag tag-sm">SIMbox / bypass</span><span class="tag tag-sm">SMS fraud</span><span class="tag tag-sm">Location fraud</span><span class="tag tag-sm">rules + ML</span></div><p class="t-figcap">Voice roaming forks on <strong>where the media anchors</strong> — home-routed vs local breakout. The fraud module detects the classic roaming scams with rules and machine learning on synthetic call-detail records.</p></div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Module breakdown</p>
+      <div class="t-mods">
+        <div class="t-mod"><span class="t-mn">0</span><div><span class="t-mt">Bootstrap &amp; the ladder renderer</span><span class="t-mtime">20 min</span><div class="t-md">Helpers and synthetic signalling — the course is offline-first, spanning operators.</div></div></div>
+<div class="t-mod"><span class="t-mn">1</span><div><span class="t-mt">The roaming architecture &amp; the network cast</span><span class="t-mtime">35 min</span><div class="t-md">Home/visited networks, the IPX, the DEA and the SEPP.</div></div></div>
+<div class="t-mod"><span class="t-mn">2</span><div><span class="t-mt">SS7/SIGTRAN &amp; MAP/CAMEL roaming (2G/3G)</span><span class="t-mtime">45 min</span><div class="t-md">The legacy roaming signalling — and why it is dangerous.</div></div></div>
+<div class="t-mod"><span class="t-mn">3</span><div><span class="t-mt">Diameter roaming (4G/EPC)</span><span class="t-mtime">45 min</span><div class="t-md">S6a, the DEA, and Diameter routing across realms.</div></div></div>
+<div class="t-mod"><span class="t-mn">4</span><div><span class="t-mt">VoLTE &amp; VoNR roaming</span><span class="t-mtime">45 min</span><div class="t-md">Home-routed (S8HR) vs local breakout (LBO).</div></div></div>
+<div class="t-mod"><span class="t-mn">5</span><div><span class="t-mt">5G roaming &amp; the SEPP</span><span class="t-mtime">35 min</span><div class="t-md">N32-c/N32-f, PRINS vs TLS, and roaming over the SBI.</div></div></div>
+<div class="t-mod"><span class="t-mn">6</span><div><span class="t-mt">Signalling security: firewalls</span><span class="t-mtime">45 min</span><div class="t-md">Classifying and blocking hostile SS7/Diameter/GTP by category.</div></div></div>
+<div class="t-mod"><span class="t-mn">7</span><div><span class="t-mt">Roaming fraud detection &amp; prevention</span><span class="t-mtime">45 min</span><div class="t-md">IRSF, Wangiri, SIMbox and more — rules plus ML on synthetic records.</div></div></div>
+<div class="t-mod"><span class="t-mn">8</span><div><span class="t-mt">Operations: monitoring &amp; on-call</span><span class="t-mtime">45 min</span><div class="t-md">The right KPIs, cross-operator fault localization, and an on-call runbook.</div></div></div>
+      </div>
+    </div>
+
+    <div class="t-mastery">
+      <h3>What defending the boundary looks like</h3>
+      <ul>
+        <li><i class="fas fa-arrow-right"></i><span>Trace a subscriber's attach across two operators and know which node owns each leg.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Classify an inbound signalling message by attack category and decide block vs allow.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Tell home-routed from local-breakout voice roaming by where the media anchors.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-pagenav">
+      <a href="{{ '/training/course/06/' | relative_url }}">&larr; Course 06 — Deep, Graph &amp; Federated ML</a>
+      <span></span>
+    </div>
+
+  </div>
+</section>

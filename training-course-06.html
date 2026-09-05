@@ -1,0 +1,82 @@
+---
+layout: default
+title: "Training — Course 06: Deep, Graph &amp; Federated ML"
+permalink: /training/course/06/
+description: "Course 06 — Deep, Graph &amp; Federated ML. Aims, module breakdown and text-based diagrams from the 5G Core & IMS lab program."
+---
+
+<div class="page-hero">
+  <div class="container">
+    <div class="t-hero-badge"><span class="t-hero-num">06</span><span class="t-hero-tag">Data · ML Track</span></div>
+    <h1 class="page-title">Deep, Graph &amp; Federated ML</h1>
+    <p class="page-subtitle">When a deep, graph or federated method beats a classical one on network data — and when it does not.</p>
+  </div>
+</div>
+
+<section class="page-content" style="padding-top:2.25rem;">
+  <div class="container">
+    <p class="t-crumb"><a href="{{ '/training/' | relative_url }}">Training</a> &nbsp;/&nbsp; Course 06</p>
+
+    <div class="t-subnav">
+      <a href="{{ '/training/' | relative_url }}">Overview</a>
+      <a href="{{ '/training/lab/' | relative_url }}">Lab Environment</a>
+      <a href="{{ '/training/topics/' | relative_url }}">Topics &amp; Cases</a>
+    </div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Aims — what you can do after</p>
+      <ul class="t-aims">
+        <li><i class="fas fa-check"></i><span>Decide when a deep, graph or federated method beats a classical one — and when it does not.</span></li>
+<li><i class="fas fa-check"></i><span>Apply a CNN to time series and use convolutional / ROCKET features to classify or score KPIs.</span></li>
+<li><i class="fas fa-check"></i><span>Model signalling as sequences — turn call ladders into features, and read a self-attention map.</span></li>
+<li><i class="fas fa-check"></i><span>Localize faults with a graph neural network over the service-based-architecture topology.</span></li>
+<li><i class="fas fa-check"></i><span>Detect anomalies with a deep autoencoder, and compare it fairly to PCA and Isolation Forest.</span></li>
+<li><i class="fas fa-check"></i><span>Train a model with federated learning across simulated sites, and explain what non-IID data does.</span></li>
+<li><i class="fas fa-check"></i><span>Wrap any model in a trust layer: conformal prediction, drift detection and a correct human-in-the-loop.</span></li>
+<li><i class="fas fa-check"></i><span>Translate every method to its production (PyTorch) form and to the reference analytics function.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-section"><p class="t-sec-label">The decision that opens the course</p><pre class="t-ladder"><span class="h">  Is the signal in STRUCTURE a classical model can't see?</span>
+   |
+<span class="a">   +-- a shape over time (KPI curve) ........... CNN / ROCKET</span>
+<span class="a">   +-- an ordered sequence (call ladder) ....... attention / sequence model</span>
+<span class="a">   +-- a topology (which NF talks to which) .... graph neural network</span>
+<span class="a">   +-- 'normal' is complex &amp; unlabelled ........ deep autoencoder</span>
+   |
+<span class="w">   +-- small, flat, tabular data .............. a tree still wins — use it</span>
+<span class="c">   #  every deep result is judged against a classical baseline, honestly</span></pre><p class="t-figcap">The first question the course trains — reach for deep learning only when it earns its keep.</p></div>
+<div class="t-section"><p class="t-sec-label">The deep toolkit, mapped to network data</p><div class="t-diagram"><div class="t-hflow"><span class="t-hb">CNN · time series</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Attention · ladders</span> <span class="t-ha">&rarr;</span> <span class="t-hb">GNN · topology</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Autoencoder · anomaly</span></div></div><p class="t-figcap">Each family matches a <strong>shape</strong> in the data: a curve, a sequence, a graph, or a hard-to-model “normal”. The course builds each one and compares it fairly to a simpler method.</p></div>
+<div class="t-section"><p class="t-sec-label">Federated learning — train without moving the data</p><div class="t-diagram"><div class="t-vflow"><div class="t-step"><span class="t-sk">Local train</span><span class="t-sv">Each site / slice trains on its <strong>own</strong> data — the data never leaves.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Send weights</span><span class="t-sv">Only the model updates go to the server — not the traffic, not the subscribers.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Average</span><span class="t-sv">The server combines them (<strong>FedAvg</strong>) into one shared model.</span></div><div class="t-varrow">&darr;</div><div class="t-step"><span class="t-sk">Broadcast</span><span class="t-sv">The improved model goes back to every site — and the loop repeats.</span></div></div></div><p class="t-figcap">Sites keep their traffic private and still build one shared model. You also see what <strong>non-IID</strong> data (every site different) does to that average.</p></div>
+<div class="t-section"><p class="t-sec-label">The trust layer around any model</p><div class="t-diagram"><div class="t-hflow"><span class="t-hb">Prediction</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Conformal set</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Drift check</span> <span class="t-ha">&rarr;</span> <span class="t-hb">Human decides</span></div></div><p class="t-figcap">A prediction is not enough: <strong>conformal prediction</strong> gives calibrated confidence, a <strong>drift</strong> check flags when the model has gone stale, and a human owns the consequential calls.</p></div>
+
+    <div class="t-section">
+      <p class="t-sec-label">Module breakdown</p>
+      <div class="t-mods">
+        <div class="t-mod"><span class="t-mn">0</span><div><span class="t-mt">Foundation &amp; the synthetic telemetry engine</span><span class="t-mtime">25 min</span><div class="t-md">The stack and the data generator — the course runs fully offline, no GPU.</div></div></div>
+<div class="t-mod"><span class="t-mn">1</span><div><span class="t-mt">Why deep? Representations vs hand-crafted features</span><span class="t-mtime">30 min</span><div class="t-md">What deep learning buys you, and what it costs.</div></div></div>
+<div class="t-mod"><span class="t-mn">2</span><div><span class="t-mt">CNNs for time series</span><span class="t-mtime">45 min</span><div class="t-md">The convolution mechanism and fast ROCKET features for KPI curves.</div></div></div>
+<div class="t-mod"><span class="t-mn">3</span><div><span class="t-mt">Sequence models &amp; self-attention</span><span class="t-mtime">45 min</span><div class="t-md">Signalling ladders as sequences; reading an attention map.</div></div></div>
+<div class="t-mod"><span class="t-mn">4</span><div><span class="t-mt">Graph neural networks</span><span class="t-mtime">45 min</span><div class="t-md">Fault localization over the service-based-architecture topology.</div></div></div>
+<div class="t-mod"><span class="t-mn">5</span><div><span class="t-mt">Deep anomaly detection</span><span class="t-mtime">40 min</span><div class="t-md">Autoencoders vs PCA vs Isolation Forest — a fair comparison.</div></div></div>
+<div class="t-mod"><span class="t-mn">6</span><div><span class="t-mt">Federated learning</span><span class="t-mtime">45 min</span><div class="t-md">FedAvg across sites and slices, and the non-IID problem.</div></div></div>
+<div class="t-mod"><span class="t-mn">7</span><div><span class="t-mt">Trust</span><span class="t-mtime">35 min</span><div class="t-md">Conformal prediction, drift detection and the human in the loop.</div></div></div>
+      </div>
+    </div>
+
+    <div class="t-mastery">
+      <h3>What this course adds to your ML</h3>
+      <ul>
+        <li><i class="fas fa-arrow-right"></i><span>Reach for deep learning only when data and structure justify it — and prove it against a baseline.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Read a self-attention map and a graph model's node scores as <strong>explanations</strong>, not black boxes.</span></li>
+<li><i class="fas fa-arrow-right"></i><span>Ship a model with calibrated confidence and a drift alarm, not just an accuracy number.</span></li>
+      </ul>
+    </div>
+
+    <div class="t-pagenav">
+      <a href="{{ '/training/course/05/' | relative_url }}">&larr; Course 05 — Data Engineering &amp; ML</a>
+      <a href="{{ '/training/course/07/' | relative_url }}">Course 07 — IMS Roaming &amp; Security &rarr;</a>
+    </div>
+
+  </div>
+</section>
