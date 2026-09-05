@@ -8,7 +8,7 @@ description: A coverage map of every procedure, protocol, IMS service, fault cas
 <div class="page-hero">
   <div class="container">
     <h1 class="page-title">Topics &amp; Cases</h1>
-    <p class="page-subtitle">Every procedure, protocol, service and failure mode the six courses put in your hands — and which course teaches each.</p>
+    <p class="page-subtitle">Every procedure, protocol, service and failure mode the eight courses put in your hands — and which course teaches each.</p>
   </div>
 </div>
 
@@ -23,11 +23,11 @@ description: A coverage map of every procedure, protocol, IMS service, fault cas
 
     <!-- coverage stats -->
     <div class="hero-stats" style="margin-bottom:2rem;">
-      <div class="stat-item"><span class="stat-value">6</span><span class="stat-label">Reference points</span></div>
-      <div class="stat-item"><span class="stat-value">10+</span><span class="stat-label">Diameter commands</span></div>
-      <div class="stat-item"><span class="stat-value">30+</span><span class="stat-label">Call-flow ladders</span></div>
+      <div class="stat-item"><span class="stat-value">50+</span><span class="stat-label">Call-flow ladders</span></div>
+      <div class="stat-item"><span class="stat-value">SS7→5G</span><span class="stat-label">Signalling planes</span></div>
       <div class="stat-item"><span class="stat-value">8</span><span class="stat-label">Fault cases</span></div>
-      <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">ML model families</span></div>
+      <div class="stat-item"><span class="stat-value">6</span><span class="stat-label">ML model families</span></div>
+      <div class="stat-item"><span class="stat-value">4</span><span class="stat-label">Fraud types</span></div>
     </div>
 
     <div class="t-legend">
@@ -36,6 +36,8 @@ description: A coverage map of every procedure, protocol, IMS service, fault cas
       <span class="t-lg"><span class="t-badge b-03">03</span> Adv. Core</span>
       <span class="t-lg"><span class="t-badge b-04">04</span> Adv. IMS</span>
       <span class="t-lg"><span class="t-badge b-05">05</span> Data &amp; ML</span>
+      <span class="t-lg"><span class="t-badge b-06">06</span> Deep ML</span>
+      <span class="t-lg"><span class="t-badge b-07">07</span> Roaming/Sec</span>
     </div>
 
     <div class="t-doms">
@@ -101,6 +103,36 @@ description: A coverage map of every procedure, protocol, IMS service, fault cas
         </div>
       </div>
 
+      <!-- Deep & federated ML -->
+      <div class="t-panel">
+        <h3>Deep, graph &amp; federated ML</h3>
+        <p class="t-ph">When deep learning beats classical — and when it does not.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+          <div class="t-item"><span class="t-inm">CNN / ROCKET<small>convolution on KPI time series</small></span><span class="t-badges"><span class="t-badge b-06">06</span></span></div>
+          <div class="t-item"><span class="t-inm">Sequence models<small>attention over signalling ladders</small></span><span class="t-badges"><span class="t-badge b-06">06</span></span></div>
+          <div class="t-item"><span class="t-inm">Graph neural nets<small>fault localization on the SBA</small></span><span class="t-badges"><span class="t-badge b-06">06</span></span></div>
+          <div class="t-item"><span class="t-inm">Deep anomaly<small>autoencoder vs PCA vs iForest</small></span><span class="t-badges"><span class="t-badge b-06">06</span></span></div>
+          <div class="t-item"><span class="t-inm">Federated learning<small>FedAvg across sites · non-IID</small></span><span class="t-badges"><span class="t-badge b-06">06</span></span></div>
+          <div class="t-item"><span class="t-inm">Trust layer<small>conformal · drift · human-in-loop</small></span><span class="t-badges"><span class="t-badge b-06">06</span></span></div>
+        </div>
+      </div>
+
+      <!-- Roaming & signalling security -->
+      <div class="t-panel">
+        <h3>Roaming &amp; signalling security</h3>
+        <p class="t-ph">International roaming, and how to defend the operator boundary.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+          <div class="t-item"><span class="t-inm">Roaming architecture<small>HPMN/VPMN · IPX · DEA · SEPP</small></span><span class="t-badges"><span class="t-badge b-07">07</span></span></div>
+          <div class="t-item"><span class="t-inm">SS7 / MAP / CAMEL<small>2G/3G roaming flows</small></span><span class="t-badges"><span class="t-badge b-07">07</span></span></div>
+          <div class="t-item"><span class="t-inm">Diameter roaming<small>S6a · the DEA · realm routing</small></span><span class="t-badges"><span class="t-badge b-07">07</span></span></div>
+          <div class="t-item"><span class="t-inm">VoLTE / VoNR roaming<small>S8HR vs local breakout</small></span><span class="t-badges"><span class="t-badge b-07">07</span></span></div>
+          <div class="t-item"><span class="t-inm">5G roaming &amp; SEPP<small>N32 · PRINS vs TLS · SBI</small></span><span class="t-badges"><span class="t-badge b-07">07</span></span></div>
+          <div class="t-item"><span class="t-inm">Signalling firewalls<small>SS7/Diameter/GTP by category</small></span><span class="t-badges"><span class="t-badge b-07">07</span></span></div>
+          <div class="t-item"><span class="t-inm">Fraud detection<small>IRSF · Wangiri · SIMbox · rules + ML</small></span><span class="t-badges"><span class="t-badge b-07">07</span></span></div>
+          <div class="t-item"><span class="t-inm">Operations &amp; on-call<small>KPIs · cross-operator RCA · runbook</small></span><span class="t-badges"><span class="t-badge b-07">07</span></span></div>
+        </div>
+      </div>
+
     </div>
 
     <!-- FAULT CASES -->
@@ -132,6 +164,17 @@ description: A coverage map of every procedure, protocol, IMS service, fault cas
         <span class="t-code"><b>488</b> <span>codec intersection</span></span>
         <span class="t-code"><b>503</b> <span>overload</span></span>
         <span class="t-code"><b>603</b> <span>barring</span></span>
+      </div>
+
+      <p style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin:1.25rem 0 0.6rem;">Roaming threats &amp; fraud you learn to catch (Course 07)</p>
+      <div class="t-codes">
+        <span class="t-code"><b>SS7</b> <span>location tracking / intercept</span></span>
+        <span class="t-code"><b>Diameter</b> <span>S6a abuse across the border</span></span>
+        <span class="t-code"><b>GTP</b> <span>user-plane injection</span></span>
+        <span class="t-code"><b>IRSF</b> <span>revenue-share fraud</span></span>
+        <span class="t-code"><b>Wangiri</b> <span>one-ring callback scam</span></span>
+        <span class="t-code"><b>SIMbox</b> <span>interconnect bypass</span></span>
+        <span class="t-code"><b>SMS</b> <span>spoof / grey-route</span></span>
       </div>
     </div>
 
