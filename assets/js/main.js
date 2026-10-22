@@ -68,3 +68,38 @@
     }
   });
 })();
+
+// ===================================================
+// PROJECT FILTER (projects page)
+// ===================================================
+(function () {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#projects-grid .project-card');
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(',');
+        card.style.display = (filter === 'all' || tags.includes(filter)) ? '' : 'none';
+      });
+    });
+  });
+})();
+
+// ===================================================
+// FRAME BUSTING (clickjacking defence; GitHub Pages can't send
+// X-Frame-Options / frame-ancestors headers)
+// ===================================================
+(function () {
+  if (window.top !== window.self) {
+    try {
+      window.top.location = window.self.location;
+    } catch (e) {
+      document.documentElement.style.display = 'none';
+    }
+  }
+})();
