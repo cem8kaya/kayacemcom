@@ -26,7 +26,7 @@ description: Technical projects by Cem Kaya — 5G Core networks, AI/ML systems,
 
     <div class="projects-page-grid" id="projects-grid">
       {% for project in site.data.projects %}
-      <div class="project-card reveal" data-tags="{{ project.tags | join: ',' }}">
+      <div class="project-card reveal" data-tags="{{ project.tags | join: ',' | escape }}">
         <div class="project-card-header">
           <div class="project-icon">
             {% if project.tags contains "iOS" %}
@@ -79,26 +79,3 @@ description: Technical projects by Cem Kaya — 5G Core networks, AI/ML systems,
     </p>
   </div>
 </section>
-
-<script>
-  // Filter functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('#projects-grid .project-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const filter = this.dataset.filter;
-        cards.forEach(card => {
-          if (filter === 'all' || card.dataset.tags.includes(filter)) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  });
-</script>

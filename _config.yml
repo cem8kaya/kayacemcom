@@ -11,10 +11,6 @@ author:
   github: cem8kaya
   location: Istanbul, Turkey
 
-# Contact Form Settings
-contact_form:
-  web3forms_key: "REDACTED-KEY-REMOVED" # Put your key from https://web3forms.com/ here
-
 # Build settings
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
@@ -27,9 +23,23 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+# Dotfile directories Jekyll skips by default but we want published
+include:
+  - .well-known
+
+# Everything listed here is NOT published to the live site.
+# Personal/private material (interview notes, resume sources with phone number) must never be served.
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - vendor
+  - vendor/bundle
   - README.md
+  - build_resume.py
+  - origresumes
+  - ookla_csm_hazirlik.md
+  - ookla_personal_narrative.md
+  - "*.docx"
+  - "*.py"
+  - .github
+  - .gitignore
